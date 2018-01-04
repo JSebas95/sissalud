@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Cliente;
+use Session;
 
 class PpalController extends Controller
 {
@@ -13,9 +15,16 @@ class PpalController extends Controller
         if(is_null($query)){
           $cliente=Cliente::all();
         }else{
-          $user_id=Cliente::where('cc',$query)->get();
+          $cliente=Cliente::where('cc',$query)->get();
         }
       }
-      return view('ppal.pago.index');
+      return view('ppal.pago.index',["cliente"=>$cliente,"searchText"=>$query]);
+    }
+
+    public function show($id){
+      $cliente = Cliente::where('cc', $id)->get();
+
+        return view("ppal.pago.show",["cliente"=>$cliente]);
+
     }
 }
