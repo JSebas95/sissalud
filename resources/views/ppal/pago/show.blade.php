@@ -91,10 +91,10 @@ $("#guardar").hide();
 function agregarsalud(){
 
   salud=1;
-  subtotal[cont]=total+salud;
+  subtotal[cont]=salud;
   total=total+subtotal[cont];
 
-  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+salud+'">Pago</label></td><td><input type="number" name="salud[]" value="'+salud+'"></td><td>'+subtotal[cont]+'</td></tr>';
+  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+salud+'">Pago</label></td><td><input type="number" name="salud[]" value="'+salud+'"></td><td>'+salud+'</td></tr>';
 		cont++;
 		evaluar();
 		    $("#total").html("$/ " + total);
@@ -103,17 +103,27 @@ function agregarsalud(){
 }
 
 function agregararl(){
-  arl=$("#arl").val();
-  descripcion="ARL";
-  //subtotal[cont]=(subtotal+=arl)
-  total=total+arl;
+  arl=2;
+  subtotal[cont]=arl;
+  total=total+subtotal[cont];
+
+  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+arl+'">Pago</label></td><td><input type="number" name="salud[]" value="'+arl+'"></td><td>'+arl+'</td></tr>';
+		cont++;
+		evaluar();
+		    $("#total").html("$/ " + total);
+		   $("#detalles").append(fila);
 }
 
 function agregarpension(){
-  pension=$("#pension").val();
-  descripcion="Pension";
-  subtotal[cont]=(subtotal+=pension)
-  total=total+pension;
+  pension=3;
+  subtotal[cont]=pension;
+  total=total+subtotal[cont];
+
+  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+pension+'">Pago</label></td><td><input type="number" name="salud[]" value="'+pension+'"></td><td>'+pension+'</td></tr>';
+		cont++;
+		evaluar();
+		    $("#total").html("$/ " + total);
+		   $("#detalles").append(fila);
 }
 
 function evaluar(){
