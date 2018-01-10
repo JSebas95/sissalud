@@ -32,7 +32,7 @@ class PpalController extends Controller
 
     }
 
-    public function stores($id,Request $request){
+    public function stores($id, Request $request){
       $cliente = Cliente::where('id_user', $id)->first();
       $pago= new Pago;
       $pago->nombre=$cliente->nombre;

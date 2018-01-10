@@ -45,10 +45,10 @@
             	<tfoot>
             		<th>Total</th>
             		<th></th>
-                <form method="POST" action="/stores">
-                  {{ csrf_field() }}
 
 
+                {!!Form::open(['action' => ['PpalController@stores', $cli->id_user]])!!}
+                 {{Form::token()}}
 
                 <th><input type="text" id="total" name="total" value="0"/></th>
             	</tfoot>
@@ -59,13 +59,13 @@
   </div>
   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12" id="guardar">
     <div class="form-group">
-      <a href="{{URL::action('PpalController@stores',$cli->id_user)}}"><button class="btn btn-primary" type="submit">Guardar</button>
+      <button class="btn btn-primary" type="submit">Guardar</button>
       <button class="btn btn-danger" type="reset">Cancelar</button>
-</form>
+
     </div>
 
   </div>
-
+{!!Form::close()!!}
           @endforeach
 
 
