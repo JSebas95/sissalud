@@ -16,10 +16,6 @@
             @foreach($cliente as $cli)
 
 
-
-
-
-
               <h2 name="nombre">Nombre: {{ $cli->nombre }}</h2>
               <h2 id="apellido">Apellido: {{ $cli->apellido }}</h2>
               <h2 id="cc">CC: {{ $cli->cc }}</h2><!--Deuda-->
@@ -61,6 +57,7 @@
     <div class="form-group">
       <button class="btn btn-primary" type="submit">Guardar</button>
       <button class="btn btn-danger" type="reset">Cancelar</button>
+      <td><a href="{{URL::action('PpalController@downloadPDF',$cli->id_user)}}"><button class="btn btn-warning">Descargar PDF</button></td>
 
     </div>
 
@@ -145,7 +142,7 @@ function evaluar(){
 
 function eliminar(index){
   total=total-subtotal[index];
-  $('#total').html("$/ "+total);
+  $('#total').val(total);
   $('#fila'+index).remove();
   evaluar();
   }

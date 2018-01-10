@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+
 use App\Cliente;
 use Session;
 use PDF;
 use App\Pago;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+use DB;
+
+
+use App\Http\Controllers\Controller;
 
 class PpalController extends Controller
 {
@@ -41,12 +46,27 @@ class PpalController extends Controller
       $pago->valor=$request->get('total');
       $mytime = Carbon::now('America/Bogota');
       $pago->creacion=$mytime->toDateTimeString();
+      //$pdf = PDF::loadView('ppal/pago/pdf',compact('pago'));
       $pago->save();
-      return Redirect::to('ppal/pago');
+
+      $clientes=Cliente::where('id_user',$id)->get();
+
+       $pdf = PDF::loadView('ppal.pago.pdf',compact('clientes'));
+       return $pdf->download('ss.pdf');
+
+
+      //return $pdf->download('ss.pdf');
 
     }
 
     public function downloadPDF($id){
 
-    }
+          $cliente=Cliente::where('id_user',$id)->get();
+
+           $pdf = PDF::loadView('ppal.pago.pdf',compact('cliente'));
+           return $pdf->download('ss.pdf');
+
+}
+
+
 }

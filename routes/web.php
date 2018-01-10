@@ -16,8 +16,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/downloadPDF/{any?}','PpalController@downloadPDF');
 Route::resource('ppal/pago','PpalController');
 Route::post('ppal/stores/{any?}','PpalController@stores');
 
 Route::get('/home', 'HomeController@index')->name('home');
-//Route::post('/stores', 'PpalController@stores');
