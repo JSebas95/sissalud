@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use DB;
 use App\Cliente;
 use Session;
+use PDF;
+use App\Pago;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class PpalController extends Controller
 {
@@ -25,6 +29,24 @@ class PpalController extends Controller
       $cliente = Cliente::where('cc', $id)->get();
 
         return view("ppal.pago.show",["cliente"=>$cliente]);
+
+    }
+
+    public function stores($id,Request $request){
+      $cliente = Cliente::where('id_user', $id)->first();
+      $pago= new Pago;
+      $pago->nombre=$cliente->nombre;
+      $pago->apellido="Hola";
+      $pago->cc="12390";
+      $pago->valor="222";
+      $mytime = Carbon::now('America/Bogota');
+      $pago->creacion=$mytime->toDateTimeString();
+      $pago->save();
+      return Redirect::to('ppal/pago');
+
+    }
+
+    public function downloadPDF($id){
 
     }
 }

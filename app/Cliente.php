@@ -11,4 +11,6 @@ class Cliente extends Model
     protected $table="cliente";
 
     protected $fillable=['nombre','apellido','cc','telefono'];
+
+    public $timestamps = false;
 }

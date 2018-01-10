@@ -15,8 +15,7 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
-Route::resource('ppal/pago','PpalController');
-
 Auth::routes();
-
+Route::resource('ppal/pago','PpalController');
+Route::get('ppal/stores/{any?}','PpalController@stores');
 Route::get('/home', 'HomeController@index')->name('home');
