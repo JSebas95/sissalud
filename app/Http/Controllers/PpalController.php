@@ -36,9 +36,9 @@ class PpalController extends Controller
       $cliente = Cliente::where('id_user', $id)->first();
       $pago= new Pago;
       $pago->nombre=$cliente->nombre;
-      $pago->apellido="Hola";
-      $pago->cc="12390";
-      $pago->valor="222";
+      $pago->apellido=$cliente->apellido;
+      $pago->cc=$cliente->cc;
+      $pago->valor=$request->get('total');
       $mytime = Carbon::now('America/Bogota');
       $pago->creacion=$mytime->toDateTimeString();
       $pago->save();

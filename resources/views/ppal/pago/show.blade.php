@@ -13,7 +13,9 @@
         <div class="alert alert-info">{{ Session::get('message') }}</div>
     @endif
 
-        @foreach($cliente as $cli)
+            @foreach($cliente as $cli)
+
+
 
 
 
@@ -38,25 +40,32 @@
             		<th>opciones</th>
             		<th>Descripción</th>
             		<th>Valor Total</th>
-
+                <th>Valor Total</th>
             	</thead>
             	<tfoot>
             		<th>Total</th>
             		<th></th>
-            		<th><h4 name="total" id="total">$0</h4></th>
+                <form method="POST" action="/stores">
+                  {{ csrf_field() }}
+
+
+
+                <th><input type="text" id="total" name="total" value="0"/></th>
             	</tfoot>
                 <tbody></tbody>
             	</table>
+
   </div>
   </div>
   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12" id="guardar">
     <div class="form-group">
       <a href="{{URL::action('PpalController@stores',$cli->id_user)}}"><button class="btn btn-primary" type="submit">Guardar</button>
       <button class="btn btn-danger" type="reset">Cancelar</button>
-
+</form>
     </div>
 
   </div>
+
           @endforeach
 
 
@@ -98,7 +107,7 @@ function agregarsalud(){
   var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+salud+'">Pago de Salud</label></td><td>'+salud+'</td></tr>';
 		cont++;
 		evaluar();
-		    $("#total").html("$/ " + total);
+		    $("#total").val(total);
 		   $("#detalles").append(fila);
 
 }
@@ -111,7 +120,7 @@ function agregararl(){
   var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+arl+'">Pago de Arl</label></td><td>'+arl+'</td></tr>';
 		cont++;
 		evaluar();
-		    $("#total").html("$/ " + total);
+		    $("#total").val(total);
 		   $("#detalles").append(fila);
 }
 
@@ -123,7 +132,7 @@ function agregarpension(){
   var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+pension+'">Pago de Pensión</label></td><td>'+pension+'</td></tr>';
 		cont++;
 		evaluar();
-		    $("#total").html("$/ " + total);
+		    $("#total").val(total);
 		   $("#detalles").append(fila);
 }
 

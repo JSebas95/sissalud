@@ -19,3 +19,4 @@ Auth::routes();
 Route::resource('ppal/pago','PpalController');
 Route::get('ppal/stores/{any?}','PpalController@stores');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/stores', 'PpalController@stores');
