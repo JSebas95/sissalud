@@ -38,4 +38,16 @@ class PagoController extends Controller
     }
 
 
+    public function show(){
+        $one_month_ago = Carbon::now()->subMonth(1)->toDateString();
+        $pago=Pago::orderBy('creacion','desc')->whereDate('creacion','>=',$one_month_ago)->get();
+        $total_pagado=0;
+        foreach ($pago as $pag) {
+          $total_pagado += $pag->valor;
+        }
+        return view('ppal.factura.show',compact('pago','total_pagado'));
+
+    }
+
+
 }
