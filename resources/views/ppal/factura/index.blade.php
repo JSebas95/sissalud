@@ -4,7 +4,7 @@
 <div class="container">
 
 
-  <h1>Lista de usuarios</h1>
+  <h1>Lista de Pagos de usuarios</h1>
 
   <div class="col-lg-12">
 
@@ -21,6 +21,7 @@
                 <td>Apellido</td>
                 <td>Fecha de pago</td>
                 <td>Valor Pagado</td>
+                <td>Imprimir Factura</td>
 
                 <!--<td colspan="2"></td>-->
             </tr>
@@ -33,6 +34,7 @@
               <td>{{ $pa->cliente->apellido }}</td>
               <td>{{ $pa->creacion }}</td>
               <td>${{ $pa->valor }}</td>
+              <td><a href="{{URL::action('PagoController@imprimirPDF',$pa->id_pago)}}"><button class="btn btn-warning">Imprimir</button></td>
 
 
 

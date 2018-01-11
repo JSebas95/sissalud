@@ -27,4 +27,15 @@ class PagoController extends Controller
       }
       return view('ppal.factura.index',["pago"=>$pago,"searchText"=>$query]);
     }
+
+    public function imprimirPDF($id){
+
+      $pago=Pago::where('id_pago',$id)->get();
+
+       $pdf = PDF::loadView('ppal.factura.pdf',compact('pago'));
+       return $pdf->download('Factura.pdf');
+
+    }
+
+
 }

@@ -48,9 +48,6 @@ class PpalController extends Controller
       $pago->save();
 
 
-      $pago= Pago::orderBy('id_user','desc')->get();
-
-      $query=$request->get('searchText');
       return redirect('ppal/factura');
 
 
@@ -58,14 +55,6 @@ class PpalController extends Controller
 
     }
 
-    public function imprimirPDF(){
-      $cliente = Cliente::where('id_user',$id)->first()->id_user;
-      $pago=Pago::where('id_user',$cliente)->get();
-
-       $pdf = PDF::loadView('ppal.pago.pdf',compact('pago'));
-       return $pdf->download('Factura.pdf');
-
-    }
 
 
 

@@ -57,8 +57,6 @@
     <div class="form-group">
       <button class="btn btn-primary" type="submit">Guardar</button>
       <button class="btn btn-danger" type="reset">Cancelar</button>
-      <td><a href="{{URL::action('PpalController@downloadPDF',$cli->id_user)}}"><button class="btn btn-warning">Descargar PDF</button></td>
-
     </div>
 
   </div>
