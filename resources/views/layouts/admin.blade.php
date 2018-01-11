@@ -168,7 +168,7 @@
       </div><!-- /.content-wrapper -->
       <!--Fin-Contenido-->
       <footer class="main-footer">
-        <strong>Copyright Hecho por el ingeniero Tato el mas pro que mao.</strong>
+        <strong>Copyright</strong>
       </footer>
 
 

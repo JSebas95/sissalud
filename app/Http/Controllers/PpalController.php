@@ -40,33 +40,34 @@ class PpalController extends Controller
     public function stores($id, Request $request){
       $cliente = Cliente::where('id_user', $id)->first();
       $pago= new Pago;
-      $pago->nombre=$cliente->nombre;
-      $pago->apellido=$cliente->apellido;
-      $pago->cc=$cliente->cc;
+      $pago->id_user=$cliente->id_user;
       $pago->valor=$request->get('total');
       $mytime = Carbon::now('America/Bogota');
       $pago->creacion=$mytime->toDateTimeString();
       //$pdf = PDF::loadView('ppal/pago/pdf',compact('pago'));
       $pago->save();
 
-      $clientes=Cliente::where('id_user',$id)->get();
 
-       $pdf = PDF::loadView('ppal.pago.pdf',compact('clientes'));
-       return $pdf->download('ss.pdf');
+      $pago= Pago::orderBy('id_user','desc')->get();
+
+      $query=$request->get('searchText');
+      return redirect('ppal/factura');
 
 
-      //return $pdf->download('ss.pdf');
+
 
     }
 
-    public function downloadPDF($id){
+    public function imprimirPDF(){
+      $cliente = Cliente::where('id_user',$id)->first()->id_user;
+      $pago=Pago::where('id_user',$cliente)->get();
 
-          $cliente=Cliente::where('id_user',$id)->get();
+       $pdf = PDF::loadView('ppal.pago.pdf',compact('pago'));
+       return $pdf->download('Factura.pdf');
 
-           $pdf = PDF::loadView('ppal.pago.pdf',compact('cliente'));
-           return $pdf->download('ss.pdf');
+    }
 
-}
+
 
 
 }

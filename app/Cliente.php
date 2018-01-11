@@ -13,4 +13,8 @@ class Cliente extends Model
     protected $fillable=['nombre','apellido','cc','telefono'];
 
     public $timestamps = false;
+
+    public function pago(){
+      return $this->hasMany('App\Pago','id_user');
+    }
 }
