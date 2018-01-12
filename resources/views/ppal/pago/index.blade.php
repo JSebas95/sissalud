@@ -20,7 +20,8 @@
                 <td>Nombre</td>
                 <td>Apellido</td>
                 <td>Telefono</td>
-                <td>Pagar</td>
+                <td>Estado</td>
+                <td>Opciones</td>
 
                 <!--<td colspan="2"></td>-->
             </tr>
@@ -32,6 +33,7 @@
               <td>{{ $cli->nombre }}</td>
               <td>{{ $cli->apellido }}</td>
               <td>{{ $cli->telefono }}</td>
+              <td>{{ $cli->estado }}</td>
 
                <td><a href="{{URL::action('PpalController@show',$cli->cc)}}"><button class="btn btn-warning">Pagar</button></td>
 

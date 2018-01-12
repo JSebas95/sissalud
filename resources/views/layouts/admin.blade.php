@@ -90,7 +90,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="pago"><i class="fa fa-circle-o"></i> Pago</a></li>
+                <li><a href="/ppal/pago"><i class="fa fa-circle-o"></i> Pago</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i> No funciona</a></li>
               </ul>
             </li>
@@ -102,8 +102,8 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="factura"><i class="fa fa-circle-o"></i> Facturas</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> No funciona</a></li>
+                <li><a href="/ppal/factura"><i class="fa fa-circle-o"></i> Facturas</a></li>
+                <li><a href="/ppal/factura/show"><i class="fa fa-circle-o"></i> Reporte</a></li>
               </ul>
             </li>
             <li class="treeview">

@@ -19,6 +19,7 @@ class CreateClienteTable extends Migration
             $table->string('apellido');
             $table->integer('cc');
             $table->integer('telefono');
+            $table->string('estado');
         });
     }
 
