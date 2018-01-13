@@ -22,9 +22,9 @@ class PpalController extends Controller
       if($request){
         $query=$request->get('searchText');
         if(is_null($query)){
-          $cliente=Cliente::all();
+          $cliente=Cliente::orderBy('estado','Activo')->get();
         }else{
-          $cliente=Cliente::where('cc',$query)->get();
+          $cliente=Cliente::where('cc',$query)->orWhere('nombre',$query)->orWhere('apellido',$query)->get();
         }
       }
       return view('ppal.pago.index',["cliente"=>$cliente,"searchText"=>$query]);

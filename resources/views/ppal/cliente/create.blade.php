@@ -4,7 +4,7 @@
 <div class="container">
 
 
-  <h1>Pago de servicios</h1>
+  <h1>Cliente Nuevo</h1>
 
   <div class="col-lg-12" >
 

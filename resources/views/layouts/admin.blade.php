@@ -94,7 +94,7 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="ventas/venta"><i class="fa fa-circle-o"></i> Nuevo Cliente</a></li>
+                <li><a href="/ppal/cliente/create"><i class="fa fa-circle-o"></i> Nuevo Cliente</a></li>
                 <li><a href="ventas/cliente"><i class="fa fa-circle-o"></i> Clientes</a></li>
               </ul>
             </li>
