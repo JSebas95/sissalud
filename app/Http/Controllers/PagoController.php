@@ -29,13 +29,12 @@ class PagoController extends Controller
     }
 
     public function imprimirPDF($id){
-
       $pago=Pago::where('id_pago',$id)->get();
-
        $pdf = PDF::loadView('ppal.factura.pdf',compact('pago'));
        return $pdf->download('Factura.pdf');
+}
 
-    }
+
 
 
     public function show(){
@@ -48,6 +47,20 @@ class PagoController extends Controller
         return view('ppal.factura.show',compact('pago','total_pagado'));
 
     }
+
+    public function imprimereporte(){
+      $one_month_ago = Carbon::now()->subMonth(1)->toDateString();
+      $pago=Pago::orderBy('creacion','desc')->whereDate('creacion','>=',$one_month_ago)->get();
+      $total_pagado=0;
+      foreach ($pago as $pag) {
+        $total_pagado += $pag->valor;
+      }
+      $pdf = PDF::loadView('ppal.factura.pdfreporte',compact('pago','total_pagado'));
+      return $pdf->download('Reporte.pdf');
+
+    }
+
+
 
 
 }

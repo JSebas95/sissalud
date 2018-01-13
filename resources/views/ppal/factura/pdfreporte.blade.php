@@ -1,5 +1,3 @@
-@extends ('layouts.admin')
-@section('contenido')
 
 <div class="container">
 
@@ -8,10 +6,7 @@
 
   <div class="col-lg-12">
 
-    <!-- will be used to show any messages -->
-    @if (Session::has('message'))
-        <div class="alert alert-info">{{ Session::get('message') }}</div>
-    @endif
+
     <div class="table-inverse table-responsive">
         <table class="table table-striped table-bordered table-hover">
             <thead>
@@ -48,25 +43,7 @@
             </tbody>
         </table>
 
-        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12" id="guardar">
-          <div class="form-group">
-          <a href="{{URL::action('PagoController@imprimereporte')}}"><button class="btn btn-warning">Imprimir Reporte</button>
-          </div>
-
-        </div>
       </div>
 
-
-
-
-
   </div>
   </div>
-
-
-
-
-
-
-
-@stop

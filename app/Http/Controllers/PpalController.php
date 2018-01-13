@@ -49,11 +49,11 @@ class PpalController extends Controller
 
 
       return redirect('ppal/factura');
-
-
-
-
     }
+
+
+
+
 
 
 
