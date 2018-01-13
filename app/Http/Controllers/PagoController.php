@@ -34,17 +34,114 @@ class PagoController extends Controller
        return $pdf->download('Factura.pdf');
 }
 
+    public function show(Request $request){
+      if($request){
+        $query=$request->get('searchText');
+        if(is_null($query)){
+          $one_month_ago = Carbon::now()->subMonth(1)->toDateString();
+          $pago=Pago::orderBy('creacion','desc')->whereDate('creacion','>=',$one_month_ago)->get();
+          $total_pagado=0;
+          foreach ($pago as $pag) {
+            $total_pagado += $pag->valor;
+          }
+        }else{
+          if($query=="Enero"){
+            $pago=Pago::orderBy('creacion','desc')->whereMonth('creacion','=','01')->get();
+            $total_pagado=0;
+            foreach ($pago as $pag) {
+              $total_pagado += $pag->valor;
+            }
 
+          }elseif($query=="Febrero"){
+            $pago=Pago::orderBy('creacion','desc')->whereMonth('creacion','=','02')->get();
+            $total_pagado=0;
+            foreach ($pago as $pag) {
+              $total_pagado += $pag->valor;
+            }
 
+          }elseif($query=="Marzo"){
+            $pago=Pago::orderBy('creacion','desc')->whereMonth('creacion','=','03')->get();
+            $total_pagado=0;
+            foreach ($pago as $pag) {
+              $total_pagado += $pag->valor;
+            }
 
-    public function show(){
-        $one_month_ago = Carbon::now()->subMonth(1)->toDateString();
-        $pago=Pago::orderBy('creacion','desc')->whereDate('creacion','>=',$one_month_ago)->get();
-        $total_pagado=0;
-        foreach ($pago as $pag) {
-          $total_pagado += $pag->valor;
+          }elseif($query=="Abril"){
+            $pago=Pago::orderBy('creacion','desc')->whereMonth('creacion','=','04')->get();
+            $total_pagado=0;
+            foreach ($pago as $pag) {
+              $total_pagado += $pag->valor;
+            }
+
+          }elseif($query=="Mayo"){
+            $pago=Pago::orderBy('creacion','desc')->whereMonth('creacion','=','05')->get();
+            $total_pagado=0;
+            foreach ($pago as $pag) {
+              $total_pagado += $pag->valor;
+            }
+
+          }elseif($query=="Junio"){
+            $pago=Pago::orderBy('creacion','desc')->whereMonth('creacion','=','06')->get();
+            $total_pagado=0;
+            foreach ($pago as $pag) {
+              $total_pagado += $pag->valor;
+            }
+
+          }elseif($query=="Julio"){
+            $pago=Pago::orderBy('creacion','desc')->whereMonth('creacion','=','07')->get();
+            $total_pagado=0;
+            foreach ($pago as $pag) {
+              $total_pagado += $pag->valor;
+            }
+
+          }elseif($query=="Agosto"){
+            $pago=Pago::orderBy('creacion','desc')->whereMonth('creacion','=','08')->get();
+            $total_pagado=0;
+            foreach ($pago as $pag) {
+              $total_pagado += $pag->valor;
+            }
+
+          }elseif($query=="Septiembre"){
+            $pago=Pago::orderBy('creacion','desc')->whereMonth('creacion','=','09')->get();
+            $total_pagado=0;
+            foreach ($pago as $pag) {
+              $total_pagado += $pag->valor;
+            }
+
+          }elseif($query=="Octubre"){
+            $pago=Pago::orderBy('creacion','desc')->whereMonth('creacion','=','10')->get();
+            $total_pagado=0;
+            foreach ($pago as $pag) {
+              $total_pagado += $pag->valor;
+            }
+
+          }elseif($query=="Noviembre"){
+            $pago=Pago::orderBy('creacion','desc')->whereMonth('creacion','=','11')->get();
+            $total_pagado=0;
+            foreach ($pago as $pag) {
+              $total_pagado += $pag->valor;
+            }
+
+          }elseif($query=="Diciembre"){
+            $pago=Pago::orderBy('creacion','desc')->whereMonth('creacion','=','12')->get();
+            $total_pagado=0;
+            foreach ($pago as $pag) {
+              $total_pagado += $pag->valor;
+            }
+
+          }else{
+            $pago=Pago::orderBy('creacion','desc')->get();
+            $total_pagado=0;
+            foreach ($pago as $pag) {
+              $total_pagado += $pag->valor;
+            }
+          }
         }
-        return view('ppal.factura.show',compact('pago','total_pagado'));
+
+
+
+    }
+        return view('ppal.factura.show',['pago'=>$pago,'total_pagado'=>$total_pagado,'searchText'=>$query]);
 
     }
 

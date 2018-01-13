@@ -1,7 +1,12 @@
 @extends ('layouts.admin')
 @section('contenido')
+@include('ppal.factura.month')
+
+
 
 <div class="container">
+
+
 
 
   <h1>Reporte del ultimo mes</h1>
