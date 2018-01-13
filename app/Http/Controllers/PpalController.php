@@ -52,6 +52,23 @@ class PpalController extends Controller
     }
 
 
+    public function create(){
+      return view("ppal.cliente.create");
+
+    }
+
+    public function store(Request $request){
+      $cliente=New Cliente();
+      $cliente->nombre=$request->nombre;
+      $cliente->apellido=$request->apellido;
+      $cliente->cc=$request->cc;
+      $cliente->telefono=$request->telefono;
+      $cliente->estado="Activo";
+      $cliente->save();
+      return redirect('ppal/pago');
+    }
+
+
 
 
 

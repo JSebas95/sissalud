@@ -21,6 +21,7 @@ Route::get('/imprimereporte','PagoController@imprimereporte');
 
 
 Route::resource('ppal/pago','PpalController');
+Route::resource('ppal/cliente','PpalController');
 Route::resource('ppal/factura','PagoController');
 Route::post('ppal/stores/{any?}','PpalController@stores');
 

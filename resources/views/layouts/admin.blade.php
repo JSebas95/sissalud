@@ -17,6 +17,10 @@
     <link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">
     <link rel="apple-touch-icon" href="{{asset('img/apple-touch-icon.png')}}">
     <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}">
+    <style>
+    #form_nombre, #form_apellido, #div3 { width:220px; top: : 100px;}
+    #div2 {margin-top: 0px; margin-bottom: 0px; !important}
+</style>
 
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
@@ -82,6 +86,18 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header"></li>
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Clientes</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="ventas/venta"><i class="fa fa-circle-o"></i> Nuevo Cliente</a></li>
+                <li><a href="ventas/cliente"><i class="fa fa-circle-o"></i> Clientes</a></li>
+              </ul>
+            </li>
 
             <li class="treeview">
               <a href="#">
