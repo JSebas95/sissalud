@@ -10,7 +10,7 @@ class Pago extends Model
 
   protected $table="pago";
 
-  protected $fillable=['valor','id_user'];
+  protected $fillable=['valor','id_user','pension','salud','arl'];
 
   public $timestamps = false;
 

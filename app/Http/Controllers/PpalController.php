@@ -44,6 +44,9 @@ class PpalController extends Controller
       $pago->valor=$request->get('total');
       $mytime = Carbon::now('America/Bogota');
       $pago->creacion=$mytime->toDateTimeString();
+      $pago->pension=$request->get('pagarpension');
+      $pago->arl=$request->get('pagararl');
+      $pago->salud=$request->get('pagarsalud');
       //$pdf = PDF::loadView('ppal/pago/pdf',compact('pago'));
       $pago->save();
 

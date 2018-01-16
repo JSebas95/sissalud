@@ -46,12 +46,16 @@
                         <div id ="derecha">{{ $cli->telefono }}</div>
                         <div id ="izquierda">Concepto:</div>
 
+
+
+
               <input type="image" value="1000" id="salud" name="salud" src="{{asset('img/salud.jpg')}}"  width="120" height="120"></img>
               <input type="image" value="2000" id="arl" name="arl" src="{{asset('img/arl.png')}}"  width="120" height="120"></img>
               <input type="image" value="3000" id="pension" name="pension" src="{{asset('img/pension.jpg')}}" width="120" height="120"></img>
 
               </div>
-
+              {!!Form::open(['action' => ['PpalController@stores', $cli->id_user]])!!}
+               {{Form::token()}}
 
 
             	<table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
@@ -64,9 +68,6 @@
             		<th>Total</th>
             		<th></th>
 
-
-                {!!Form::open(['action' => ['PpalController@stores', $cli->id_user]])!!}
-                 {{Form::token()}}
 
                 <th><input type="text" id="total" name="total" value="0"/></th>
             	</tfoot>
@@ -82,8 +83,7 @@
     </div>
 
   </div>
-{!!Form::close()!!}
-          @endforeach
+
 
 
 @push('scripts')
@@ -121,7 +121,7 @@ function agregarsalud(){
   subtotal[cont]=salud;
   total=total+subtotal[cont];
 
-  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+salud+'">Salud</label></td><td>'+salud+'</td></tr>';
+  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+salud+'">Salud</label></td><td><input type="text" id="pagarsalud" name="pagarsalud" value="'+salud+'"/></td></tr>';
 		cont++;
 		evaluar();
 		    $("#total").val(total);
@@ -134,7 +134,7 @@ function agregararl(){
   subtotal[cont]=arl;
   total=total+subtotal[cont];
 
-  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+arl+'">Arl</label></td><td>'+arl+'</td></tr>';
+  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+arl+'">Arl</label></td><td><input type="text" id="pagararl" name="pagararl" value="'+arl+'"/></td></tr>';
 		cont++;
 		evaluar();
 		    $("#total").val(total);
@@ -146,7 +146,7 @@ function agregarpension(){
   subtotal[cont]=pension;
   total=total+subtotal[cont];
 
-  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+pension+'">Pensión</label></td><td>'+pension+'</td></tr>';
+  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+pension+'">Pensión</label></td><td><input type="text" id="pagarpension" name="pagarpension" value="'+pension+'"/></td></tr>';
 		cont++;
 		evaluar();
 		    $("#total").val(total);
@@ -168,6 +168,8 @@ function eliminar(index){
   }
 
 </script>
+{!!Form::close()!!}
+          @endforeach
 @endpush
 
 @stop
