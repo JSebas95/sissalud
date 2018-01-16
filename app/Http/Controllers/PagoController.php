@@ -31,7 +31,7 @@ class PagoController extends Controller
     public function imprimirPDF($id){
       $pago=Pago::where('id_pago',$id)->get();
        $pdf = PDF::loadView('ppal.factura.pdf',compact('pago'));
-       $pdf->setPaper(array(0, 0, 170, 674),"portrait");
+       $pdf->setPaper(array(0, 0, 125, 600),"portrait");
        return $pdf->download('Factura.pdf');
 }
 

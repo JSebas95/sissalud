@@ -1,6 +1,26 @@
 @extends ('layouts.admin')
 @section('contenido')
+<style>
+#contenedor{
+        width: 80%;
+}
+#izquierda{
+        height:50%;
+        float:left;
+        width:15%;
+        padding-bottom: 5px;
+        font-size:22px;
+        font-weight: bold;
+}
+#derecha{
+        height:50%;
+        float:right;
+        width:85%;
+        padding-bottom: 5px;
+        font-size:22px;
+}
 
+</style>
 <div class="container">
 
 
@@ -15,28 +35,30 @@
 
             @foreach($cliente as $cli)
 
+            <div id ="contenedor">
+                        <div id ="izquierda">Nombres: </div>
+                        <div id ="derecha">{{ $cli->nombre }}</div>
+                        <div id ="izquierda">Apellidos: </div>
+                        <div id ="derecha">{{ $cli->apellido }}</div>
+                        <div id ="izquierda">CC: </div>
+                        <div id ="derecha">{{ $cli->cc }}</div>
+                        <div id ="izquierda">Telefono: </div>
+                        <div id ="derecha">{{ $cli->telefono }}</div>
+                        <div id ="izquierda">Concepto:</div>
 
-              <h2 name="nombre">Nombre: {{ $cli->nombre }}</h2>
-              <h2 id="apellido">Apellido: {{ $cli->apellido }}</h2>
-              <h2 id="cc">CC: {{ $cli->cc }}</h2><!--Deuda-->
-              <h2>Telefono: {{ $cli->telefono }}</h2>
-              <h2>Concepto
+              <input type="image" value="1000" id="salud" name="salud" src="{{asset('img/salud.jpg')}}"  width="120" height="120"></img>
+              <input type="image" value="2000" id="arl" name="arl" src="{{asset('img/arl.png')}}"  width="120" height="120"></img>
+              <input type="image" value="3000" id="pension" name="pension" src="{{asset('img/pension.jpg')}}" width="120" height="120"></img>
 
-
-              <input type="image" value="1000" id="salud" name="salud" src="{{asset('img/salud.jpg')}}"  width="100" height="100"></img>
-              <input type="image" value="2000" id="arl" name="arl" src="{{asset('img/arl.png')}}"  width="100" height="100"></img>
-              <input type="image" value="3000" id="pension" name="pension" src="{{asset('img/pension.jpg')}}" width="100" height="100"></img></h2>
-
-
+              </div>
 
 
 
             	<table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
             	<thead style="background-color:#caf5a9">
-            		<th>opciones</th>
+            		<th>Opciones</th>
             		<th>Descripción</th>
             		<th>Valor Total</th>
-                <th>Valor Total</th>
             	</thead>
             	<tfoot>
             		<th>Total</th>
@@ -95,11 +117,11 @@ $("#guardar").hide();
 
 function agregarsalud(){
 
-  salud=1;
+  salud=87300;
   subtotal[cont]=salud;
   total=total+subtotal[cont];
 
-  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+salud+'">Pago de Salud</label></td><td>'+salud+'</td></tr>';
+  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+salud+'">Salud</label></td><td>'+salud+'</td></tr>';
 		cont++;
 		evaluar();
 		    $("#total").val(total);
@@ -108,11 +130,11 @@ function agregarsalud(){
 }
 
 function agregararl(){
-  arl=2;
+  arl=42500;
   subtotal[cont]=arl;
   total=total+subtotal[cont];
 
-  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+arl+'">Pago de Arl</label></td><td>'+arl+'</td></tr>';
+  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+arl+'">Arl</label></td><td>'+arl+'</td></tr>';
 		cont++;
 		evaluar();
 		    $("#total").val(total);
@@ -120,11 +142,11 @@ function agregararl(){
 }
 
 function agregarpension(){
-  pension=3;
+  pension=35700;
   subtotal[cont]=pension;
   total=total+subtotal[cont];
 
-  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+pension+'">Pago de Pensión</label></td><td>'+pension+'</td></tr>';
+  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+pension+'">Pensión</label></td><td>'+pension+'</td></tr>';
 		cont++;
 		evaluar();
 		    $("#total").val(total);
