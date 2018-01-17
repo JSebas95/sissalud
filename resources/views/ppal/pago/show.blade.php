@@ -53,6 +53,9 @@
               <input type="image" value="2000" id="arl" name="arl" src="{{asset('img/arl.png')}}"  width="120" height="120"></img>
               <input type="image" value="3000" id="pension" name="pension" src="{{asset('img/pension.jpg')}}" width="120" height="120"></img>
 
+
+              <input type="image" value="3000" onclick="cambiar()" id="calcular" src="{{asset('img/hoja.jpg')}}" width="50" height="50"></img>
+
               </div>
               {!!Form::open(['action' => ['PpalController@stores', $cli->id_user]])!!}
                {{Form::token()}}
@@ -95,6 +98,8 @@ $(document).ready(function(){
   });
 });
 
+
+
 $(document).ready(function(){
   $('#arl').click(function(){
     agregararl();
@@ -121,7 +126,7 @@ function agregarsalud(){
   subtotal[cont]=salud;
   total=total+subtotal[cont];
 
-  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+salud+'">Salud</label></td><td><input type="text" id="pagarsalud" name="pagarsalud" value="'+salud+'"/></td></tr>';
+  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+salud+'">Salud</label></td><td><input type="text" id="pagarsalud"  name="pagarsalud" value="'+salud+'"/></td></tr>';
 		cont++;
 		evaluar();
 		    $("#total").val(total);
@@ -160,12 +165,23 @@ function evaluar(){
     $("#guardar").hide();
   }}
 
+  function cambiar(){
+    var x = document.getElementById("pagarsalud").value;
+    var y = document.getElementById("pagararl").value;
+    var z = document.getElementById("pagarpension").value;
+    total=parseInt(x)+parseInt(y)+parseInt(z);
+    $('#total').val(total);
+
+
+  }
+
 function eliminar(index){
   total=total-subtotal[index];
   $('#total').val(total);
   $('#fila'+index).remove();
   evaluar();
   }
+
 
 </script>
 {!!Form::close()!!}

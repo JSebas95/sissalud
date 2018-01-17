@@ -17,7 +17,7 @@ class CreateClienteTable extends Migration
             $table->increments('id_user');
             $table->string('nombre');
             $table->string('apellido');
-            $table->integer('cc');
+            $table->varchar('cc');
             $table->integer('telefono');
             $table->string('estado');
         });
