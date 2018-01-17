@@ -54,9 +54,24 @@ class PpalController extends Controller
       return redirect('ppal/factura');
     }
 
-
     public function create(){
       return view("ppal.cliente.create");
+    }
+
+    public function edit($id){
+      $cliente=Cliente::where('cc',$id)->first();
+      return view('ppal.pago.edit',["cliente"=>$cliente]);
+    }
+
+    public function update($id, Request $request){
+      $cliente= Cliente::findOrFail($id);
+      $cliente->nombre=$request->get('nombre');
+      $cliente->apellido=$request->get('apellido');
+      $cliente->cc=$request->get('cc');
+      $cliente->telefono=$request->get('telefono');
+      $cliente->estado=$request->get('estado');
+      $cliente->update();
+      return redirect('ppal/pago');
 
     }
 

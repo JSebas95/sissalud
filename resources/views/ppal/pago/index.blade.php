@@ -35,7 +35,8 @@
               <td>{{ $cli->telefono }}</td>
               <td>{{ $cli->estado }}</td>
 
-               <td><a href="{{URL::action('PpalController@show',$cli->cc)}}"><button class="btn btn-warning">Pagar</button></td>
+               <td><a href="{{URL::action('PpalController@show',$cli->cc)}}"><button class="btn btn-warning">Pagar</button>
+                 <a href="{{URL::action('PpalController@edit',$cli->cc)}}"><button class="btn btn-primary">Editar</button></td>
 
 
 

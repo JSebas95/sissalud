@@ -66,12 +66,10 @@ p2{
               <strong>------- Concepto -------</strong>
             </div>
               <div id ="contenedor">
-                          <div id ="izquierda">Salud: $</div>
-                          <div id ="derecha">{{ $pa->valor }}</div>
-                          <!--<div id ="izquierda">Pensión: $</div>
-                          <div id ="derecha">{{ $pa->valor }}</div>
-                          <div id ="izquierda">ARL: $</div>
-                          <div id ="derecha">{{ $pa->valor }}</div>-->
+                          <div><strong>Salud:</strong> ${{ $pa->salud }}</div>
+                          <div><strong>Pensión:</strong> ${{ $pa->pension }}</div>
+                          <div><strong>ARL:</strong> ${{ $pa->arl }}</div>
+                          <div><strong>Total:</strong> ${{ $pa->valor }}</div>
               </div>
 
         @endforeach
