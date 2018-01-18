@@ -18,6 +18,13 @@ use App\Http\Controllers\Controller;
 
 class PpalController extends Controller
 {
+
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    
     public function index(Request $request){
       if($request){
         $query=$request->get('searchText');
