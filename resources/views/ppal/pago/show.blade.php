@@ -49,12 +49,12 @@
 
 
 
-              <input type="image" value="1000" id="salud" name="salud" src="{{asset('img/salud.jpg')}}"  width="120" height="120"></img>
-              <input type="image" value="2000" id="arl" name="arl" src="{{asset('img/arl.png')}}"  width="120" height="120"></img>
-              <input type="image" value="3000" id="pension" name="pension" src="{{asset('img/pension.jpg')}}" width="120" height="120"></img>
+              <input type="image" id="salud" name="salud" src="{{asset('img/salud.jpg')}}"  width="120" height="120"></img>
+              <input type="image" id="arl" name="arl" src="{{asset('img/arl.png')}}"  width="120" height="120"></img>
+              <input type="image" id="pension" name="pension" src="{{asset('img/pension.jpg')}}" width="120" height="120"></img>
 
 
-              <input type="image" value="3000" onclick="cambiar()" id="calcular" src="{{asset('img/hoja.jpg')}}" width="50" height="50"></img>
+              <input type="image" value="3000" onclick="cambiar();" id="calcular" src="{{asset('img/hoja.jpg')}}" width="50" height="50"></img>
 
               </div>
               {!!Form::open(['action' => ['PpalController@stores', $cli->id_user]])!!}
@@ -166,14 +166,30 @@ function evaluar(){
   }}
 
   function cambiar(){
-    var x = document.getElementById("pagarsalud").value;
-    var y = document.getElementById("pagararl").value;
-    var z = document.getElementById("pagarpension").value;
-    total=parseInt(x)+parseInt(y)+parseInt(z);
-    $('#total').val(total);
+    var x= $('#pagarsalud').val();
+    var y = $('#pagararl').val();
+    var z = $('#pagarpension').val();
+
+    if(isNaN(x)){
+      total=parseInt(y)+parseInt(z);
+      $('#total').val(total);
+    }else if (isNaN(y)) {
+      total=parseInt(x)+parseInt(z);
+      $('#total').val(total);
+    }else if (isNaN(z)) {
+      total=parseInt(x)+parseInt(y);
+      $('#total').val(total);
+    }else{
+      total=parseInt(x)+parseInt(y)+parseInt(z);
+      $('#total').val(total);
+
+    }
 
 
-  }
+
+}
+
+
 
 function eliminar(index){
   total=total-subtotal[index];
