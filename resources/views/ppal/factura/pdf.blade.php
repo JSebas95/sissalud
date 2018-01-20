@@ -39,6 +39,9 @@ p2{
         font-style:normal;
         font-weight: bold;
 }
+#titulo{
+        padding-bottom: 10px;
+}
   </style>
 </head>
 
@@ -46,6 +49,11 @@ p2{
 <body>
 
 <div align="center">
+  <div id ="titulo">
+<img src="C:\Laravel\sistemapago\public\img\logo.jpg" height="60" width="80" alt="Logo" />
+  </div>
+
+
 
 @foreach($pago as $pa)
 <div id ="tit">Gestión Profesional</div>
@@ -66,10 +74,44 @@ p2{
               <strong>------- Concepto -------</strong>
             </div>
               <div id ="contenedor">
+                @if(is_null($pa->salud) && !is_null($pa->arl) && !is_null($pa->pension))
+                <div><strong>Pensión:</strong> ${{ $pa->pension }}</div>
+                <div><strong>ARL:</strong> ${{ $pa->arl }}</div>
+                <div><strong>Total:</strong> ${{ $pa->valor }}</div>
+                @endif
+                @if(is_null($pa->arl) && !is_null($pa->salud) && !is_null($pa->pension) )
+                <div><strong>Salud:</strong> ${{ $pa->salud }}</div>
+                <div><strong>Pensión:</strong> ${{ $pa->pension }}</div>
+                <div><strong>Total:</strong> ${{ $pa->valor }}</div>
+                @endif
+                @if(is_null($pa->pension) && !is_null($pa->arl) && !is_null($pa->salud))
+                <div><strong>Salud:</strong> ${{ $pa->salud }}</div>
+                <div><strong>ARL:</strong> ${{ $pa->arl }}</div>
+                <div><strong>Total:</strong> ${{ $pa->valor }}</div>
+                @endif
+
+                @if(is_null($pa->pension) && is_null($pa->arl) && !is_null($pa->salud))
+                <div><strong>Salud:</strong> ${{ $pa->salud }}</div>
+                <div><strong>Total:</strong> ${{ $pa->valor }}</div>
+                @endif
+
+                @if(is_null($pa->pension) && !is_null($pa->arl) && is_null($pa->salud))
+                <div><strong>ARL:</strong> ${{ $pa->arl }}</div>
+                <div><strong>Total:</strong> ${{ $pa->valor }}</div>
+                @endif
+
+                @if(!is_null($pa->pension) && is_null($pa->arl) && is_null($pa->salud))
+                <div><strong>Pension:</strong> ${{ $pa->pension }}</div>
+                <div><strong>Total:</strong> ${{ $pa->valor }}</div>
+                @endif
+
+                @if(!is_null($pa->salud) && !is_null($pa->arl) && !is_null($pa->pension) )
+
                           <div><strong>Salud:</strong> ${{ $pa->salud }}</div>
                           <div><strong>Pensión:</strong> ${{ $pa->pension }}</div>
                           <div><strong>ARL:</strong> ${{ $pa->arl }}</div>
                           <div><strong>Total:</strong> ${{ $pa->valor }}</div>
+                @endif
               </div>
 
         @endforeach
