@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/downloadPDF/{any?}','PagoController@imprimirPDF');
-Route::get('/imprimereporte','PagoController@imprimereporte');
+Route::post('/imprimereporte','PagoController@imprimereporte');
 
 
 Route::resource('ppal/pago','PpalController');

@@ -49,6 +49,11 @@
      <input type="text" style="text-transform:uppercase;" class="form-control" id="street2_id" name="cc" placeholder="Numero">
  </div>
 
+ <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
+    <label for="correo" class="control-label">Correo electronico</label>
+    <input type="text" style="text-transform:uppercase;" class="form-control" id="correo" name="correo" placeholder="Correo electronico">
+</div>
+
 
 
        <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">

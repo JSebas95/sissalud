@@ -1,8 +1,42 @@
 
 <div class="container">
 
-
-  <h1>Reporte del ultimo mes</h1>
+@if($mes=="01")
+<h1>Reporte de Enero</h1>
+@endif
+@if($mes=="02")
+<h1>Reporte de Febrero</h1>
+@endif
+@if($mes=="03")
+<h1>Reporte de Marzo</h1>
+@endif
+@if($mes=="04")
+<h1>Reporte de Abril</h1>
+@endif
+@if($mes=="05")
+<h1>Reporte de Mayo</h1>
+@endif
+@if($mes=="06")
+<h1>Reporte de Junio</h1>
+@endif
+@if($mes=="07")
+<h1>Reporte de Julio</h1>
+@endif
+@if($mes=="08")
+<h1>Reporte de Agosto</h1>
+@endif
+@if($mes=="09")
+<h1>Reporte de Septiembre</h1>
+@endif
+@if($mes=="10")
+<h1>Reporte de Octubre</h1>
+@endif
+@if($mes=="11")
+<h1>Reporte de Noviembre</h1>
+@endif
+@if($mes=="12")
+<h1>Reporte de Diciembre</h1>
+@endif
 
   <div class="col-lg-12">
 

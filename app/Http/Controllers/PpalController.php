@@ -12,6 +12,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use DB;
+use Mail;
+use App\Mail\confirmapago;
 
 
 use App\Http\Controllers\Controller;
@@ -24,7 +26,7 @@ class PpalController extends Controller
         $this->middleware('auth');
     }
 
-    
+
     public function index(Request $request){
       if($request){
         $query=$request->get('searchText');
@@ -55,7 +57,9 @@ class PpalController extends Controller
       $pago->arl=$request->get('pagararl');
       $pago->salud=$request->get('pagarsalud');
       //$pdf = PDF::loadView('ppal/pago/pdf',compact('pago'));
+      //Mail::to($cliente->correo)->send(new confirmapago($pago));
       $pago->save();
+
 
 
       return redirect('ppal/factura');
@@ -88,6 +92,7 @@ class PpalController extends Controller
       $cliente->apellido=$request->apellido;
       $cliente->cc=$request->cc;
       $cliente->telefono=$request->telefono;
+      $cliente->correo=$request->correo;
       $cliente->estado="Activo";
       $cliente->save();
       return redirect('ppal/pago');

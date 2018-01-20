@@ -44,6 +44,8 @@
                         <div id ="derecha">{{ $cli->cc }}</div>
                         <div id ="izquierda">Telefono: </div>
                         <div id ="derecha">{{ $cli->telefono }}</div>
+                        <div id ="izquierda">Correo:</div>
+                        <div id ="derecha">{{ $cli->correo }}</div>
                         <div id ="izquierda">Concepto:</div>
 
 
