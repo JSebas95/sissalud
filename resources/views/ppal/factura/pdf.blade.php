@@ -4,20 +4,25 @@
   <style>
   #contenedor{
           width: 100%;
+          padding-bottom: 5px;
   }
   #izquierda{
           float:left;
           width:50%;
           padding-bottom: 5px;
+          padding-top: 6px;
           font-size:14px;
           font-weight: bold;
   }
+
   #derecha{
           float:right;
           width:50%;
           padding-bottom: 5px;
+          padding-top: 6px;
           font-size:14px;
   }
+
 
   @page { margin: 1px; }
 body { margin: 1px; }
@@ -56,7 +61,6 @@ p2{
 
 
 @foreach($pago as $pa)
-<div id ="tit">Gestión Profesional</div>
   <p2>Dir: Cll 12 N° 3-66<br />
      C.C. Villa Robledo<br />
      local 119<br />
@@ -106,11 +110,10 @@ p2{
                 @endif
 
                 @if(!is_null($pa->salud) && !is_null($pa->arl) && !is_null($pa->pension) )
-
-                          <div><strong>Salud:</strong> ${{ $pa->salud }}</div>
-                          <div><strong>Pensión:</strong> ${{ $pa->pension }}</div>
-                          <div><strong>ARL:</strong> ${{ $pa->arl }}</div>
-                          <div><strong>Total:</strong> ${{ $pa->valor }}</div>
+                    <div><strong>Salud:</strong>${{ $pa->salud }}</div>
+                    <div><strong>Pensión:</strong> ${{ $pa->pension }}</div>
+                    <div><strong>ARL:</strong> ${{ $pa->arl }}</div>
+                    <div><strong>Total:</strong> ${{ $pa->valor }}</div>
                 @endif
               </div>
 

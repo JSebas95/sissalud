@@ -29,15 +29,30 @@ class PpalController extends Controller
 
     public function index(Request $request){
       if($request){
-        $query=$request->get('searchText');
-        if(is_null($query)){
-          $cliente=Cliente::orderBy('estado','Activo')->get();
-        }else{
-          $cliente=Cliente::where('cc',$query)->orWhere('nombre',$query)->orWhere('apellido',$query)->get();
-        }
+        $query=trim($request->get('searchText'));
+        $cliente=DB::table('Cliente')
+        ->select('nombre','apellido','cc','telefono','correo','estado')
+        ->where('nombre','LIKE','%'.$query.'%')
+        ->orwhere('apellido','LIKE','%'.$query.'%')
+        ->orwhere('cc','LIKE','%'.$query.'%')
+        ->get();
       }
       return view('ppal.pago.index',["cliente"=>$cliente,"searchText"=>$query]);
+
     }
+
+
+    /*if($request){
+      $query=$request->get('searchText');
+      if(is_null($query)){
+        $cliente=Cliente::orderBy('estado','Activo')->get();
+      }else{
+        $cliente=Cliente::where('cc',$query)->orWhere('nombre',$query)->orWhere('apellido',$query)->get();
+      }
+    }
+    return view('ppal.pago.index',["cliente"=>$cliente,"searchText"=>$query]);*/
+
+
 
     public function show($id){
       $cliente = Cliente::where('cc', $id)->get();
