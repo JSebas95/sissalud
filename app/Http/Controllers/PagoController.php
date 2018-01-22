@@ -80,6 +80,12 @@ class PagoController extends Controller
 
     }
 
+    public function nopago(){
+      $cliente=Cliente::where('estado','Inactivo')->get();
+      return view('ppal.factura.nopago',['cliente'=>$cliente]);
+
+    }
+
 
 
 

@@ -21,7 +21,7 @@
 
                   <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
                     <label for="full_name_id" class="control-label">Nombre</label>
-          <input type="text" style="text-transform:uppercase;" class="form-control" id="full_name_id" name="nombre" placeholder="Nombre">
+          <input type="text" style="text-transform:uppercase;" class="form-control"  name="nombre" placeholder="Nombre">
 
                   </div>
 
@@ -29,14 +29,14 @@
 
       <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
          <label for="street1_id" class="control-label" >Apellido</label>
-         <input type="text" style="text-transform:uppercase;" class="form-control" id="street1_id" name="apellido" placeholder="Apellido">
+         <input type="text" style="text-transform:uppercase;" class="form-control"  name="apellido" placeholder="Apellido">
      </div>
 
 
 
        <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
      <label for="state_id" class="control-label">Tipo de docuemnto</label>
-     <select class="form-control" style="text-transform:uppercase;" id="state_id" name="tipo">
+     <select class="form-control" style="text-transform:uppercase;"  name="tipo">
          <option value="tipo_cc">CC</option>
          <option value="tipo_ce">Cedula de extranjeria</option>
 
@@ -46,20 +46,25 @@
 
   <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
      <label for="street2_id" class="control-label">Numero de documento</label>
-     <input type="text" style="text-transform:uppercase;" class="form-control" id="street2_id" name="cc" placeholder="Numero">
+     <input type="text" style="text-transform:uppercase;" class="form-control" name="cc" placeholder="Numero">
  </div>
 
  <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
     <label for="correo" class="control-label">Correo electronico</label>
-    <input type="text" style="text-transform:uppercase;" class="form-control" id="correo" name="correo" placeholder="Correo electronico">
+    <input type="text" style="text-transform:uppercase;" class="form-control"  name="correo" placeholder="Correo electronico">
 </div>
 
 
 
        <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
          <label for="street2_id" class="control-label">Telefono</label>
-         <input type="text" style="text-transform:uppercase;" class="form-control" id="street2_id" name="telefono" placeholder="Numero">
+         <input type="text" style="text-transform:uppercase;" class="form-control"  name="telefono" placeholder="Numero">
      </div>
+
+     <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
+       <label for="observaciones" class="control-label">Observaciones</label>
+       <textarea  class="form-control" rows="10" cols="40"  name="observaciones">No Observaciones</textarea>
+   </div>
 
 
 

@@ -61,10 +61,9 @@ p2{
 
 
 @foreach($pago as $pa)
-  <p2>Dir: Cll 12 N° 3-66<br />
-     C.C. Villa Robledo<br />
-     local 119<br />
-     Tels: 209 2666 <br />304 597 7500 <br />
+  <p2>Dir: Calle 20 N° 5-23<br />
+     local 4<br />
+     Tels: 333 7098 <br />319 332 5999 <br />
      PEREIRA - RISARALDA
      Fecha: {{ $pa->creacion }}</p2>
      ============================
@@ -110,10 +109,11 @@ p2{
                 @endif
 
                 @if(!is_null($pa->salud) && !is_null($pa->arl) && !is_null($pa->pension) )
-                    <div><strong>Salud:</strong>${{ $pa->salud }}</div>
-                    <div><strong>Pensión:</strong> ${{ $pa->pension }}</div>
-                    <div><strong>ARL:</strong> ${{ $pa->arl }}</div>
-                    <div><strong>Total:</strong> ${{ $pa->valor }}</div>
+                <div><strong>Pension:</strong> ${{ $pa->pension }}</div>
+                <div><strong>Salud:</strong> ${{ $pa->salud }}</div>
+                <div><strong>Arl:</strong> ${{ $pa->arl }}</div>
+                <div><strong>Total:</strong> ${{ $pa->valor }}</div>
+
                 @endif
               </div>
 

@@ -46,7 +46,43 @@
                         <div id ="derecha">{{ $cli->telefono }}</div>
                         <div id ="izquierda">Correo:</div>
                         <div id ="derecha">{{ $cli->correo }}</div>
+                        <div id ="izquierda">Observaciones:</div>
+                        <div id ="derecha"><textarea rows="1" cols="25" >{{$cli->observaciones}}</textarea></div>
                         <div id ="izquierda">Concepto:</div>
+                          </div>
+
+
+                          <div class="col-lg-5 col-md-5 col-dm-5 col-xs-12">
+                          	<div class="form-group">
+                          			<select name="estado" value="11" class="form-control">
+                          			  <option value="0">SALUD</option>
+                          			  <option value="1">SALUD + CONFAMILIAR</option>
+                                  <option value="2">SALUD + PENSION</option>
+                          			  <option value="3">SALUD + PENSION + CONFAMILIAR</option>
+                                  <option value="4">SALUD + ARL 1</option>
+                          			  <option value="5">SALUD + ARL 2</option>
+                                  <option value="6">SALUD + ARL 3</option>
+                          			  <option value="7">SALUD + ARL 4</option>
+                                  <option value="8">SALUD + ARL 5</option>
+                          			  <option value="9">SALUD + ARL 1 + CONFAMILIAR</option>
+                                  <option value="10">SALUD + ARL 2 + CONFAMILIAR</option>
+                          			  <option value="11">SALUD + ARL 3 + CONFAMILIAR</option>
+                                  <option value="12">SALUD + ARL 4 + CONFAMILIAR</option>
+                          			  <option value="13">SALUD + ARL 5 + CONFAMILIAR</option>
+                                  <option value="12">SALUD + ARL 1 + PENSION</option>
+                          			  <option value="15">SALUD + ARL 2 + PENSION</option>
+                                  <option value="16">SALUD + ARL 3 + PENSION</option>
+                          			  <option value="17">SALUD + ARL 4 + PENSION</option>
+                                  <option value="18">SALUD + ARL 5 + PENSION</option>
+                          			  <option value="19">SALUD + ARL 1 + PENSION + CONFAMILIAR</option>
+                                  <option value="20">SALUD + ARL 2 + PENSION + CONFAMILIAR</option>
+                          			  <option value="21">SALUD + ARL 3 + PENSION + CONFAMILIAR</option>
+                                  <option value="22">SALUD + ARL 4 + PENSION + CONFAMILIAR</option>
+                          			  <option value="23">SALUD + ARL 51 + PENSION + CONFAMILIAR</option>
+                          			</select>
+
+                          		</div>
+                          </div>
 
 
 
@@ -58,7 +94,7 @@
 
               <input type="image" value="3000" onclick="cambiar();" id="calcular" src="{{asset('img/hoja.jpg')}}" width="50" height="50"></img>
 
-              </div>
+
               {!!Form::open(['action' => ['PpalController@stores', $cli->id_user]])!!}
                {{Form::token()}}
 

@@ -58,6 +58,13 @@
 
 		</div>
 </div>
+<div class="col-lg-7 col-md-7 col-dm-7 col-xs-12">
+	<div class="form-group">
+			<label for="observaciones">Observaciones</label>
+			<textarea class="form-control" rows="10" cols="40" name="observaciones">{{$cliente->observaciones}}</textarea>
+
+		</div>
+</div>
 
 
 

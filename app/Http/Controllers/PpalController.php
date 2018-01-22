@@ -63,6 +63,7 @@ class PpalController extends Controller
 
     public function stores($id, Request $request){
       $cliente = Cliente::where('id_user', $id)->first();
+      $cliente->estado="Activo";
       $pago= new Pago;
       $pago->id_user=$cliente->id_user;
       $pago->valor=$request->get('total');
@@ -74,6 +75,7 @@ class PpalController extends Controller
       //$pdf = PDF::loadView('ppal/pago/pdf',compact('pago'));
       //Mail::to($cliente->correo)->send(new confirmapago($pago));
       $pago->save();
+      $cliente->save();
 
 
 
@@ -96,6 +98,7 @@ class PpalController extends Controller
       $cliente->cc=$request->get('cc');
       $cliente->telefono=$request->get('telefono');
       $cliente->estado=$request->get('estado');
+      $cliente->observaciones=$request->observaciones;
       $cliente->update();
       return redirect('ppal/pago');
 
@@ -109,6 +112,7 @@ class PpalController extends Controller
       $cliente->telefono=$request->telefono;
       $cliente->correo=$request->correo;
       $cliente->estado="Activo";
+      $cliente->observaciones=$request->observaciones;
       $cliente->save();
       return redirect('ppal/pago');
     }

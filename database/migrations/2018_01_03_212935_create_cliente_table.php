@@ -18,9 +18,10 @@ class CreateClienteTable extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->varchar('cc');
-            $table->integer('telefono');
-            $table->varchar('correo');
+            $table->integer('telefono')->nullable();
+            $table->varchar('correo')->nullable();
             $table->string('estado');
+            $table->longText('observaciones')->nullable();
         });
     }
 

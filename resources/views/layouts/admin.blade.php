@@ -107,19 +107,19 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="/ppal/pago"><i class="fa fa-circle-o"></i> Pago</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> No funciona</a></li>
+                <li><a href="/ppal/factura"><i class="fa fa-circle-o"></i> Facturas</a></li>
               </ul>
             </li>
 
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-th"></i>
-                <span>Facturas</span>
+                <span>Reportes</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="/ppal/factura"><i class="fa fa-circle-o"></i> Facturas</a></li>
-                <li><a href="/ppal/factura/show"><i class="fa fa-circle-o"></i> Reporte</a></li>
+                <li><a href="/ppal/factura/show"><i class="fa fa-circle-o"></i> Mes</a></li>
+                <li><a href="/ppal/factura/show/nopago"><i class="fa fa-circle-o"></i> No pago</a></li>
               </ul>
             </li>
 
