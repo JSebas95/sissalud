@@ -54,6 +54,7 @@
                     <td>{{ $cli->apellido }}</td>
                     <td>{{ $cli->telefono }}</td>
                     <td>{{ $cli->estado }}</td>
+                      
 
 
                 </tr>

@@ -21,6 +21,7 @@ class CreateClienteTable extends Migration
             $table->integer('telefono')->nullable();
             $table->varchar('correo')->nullable();
             $table->string('estado');
+            $table->integer('ultimo_pago')->nullable();
             $table->longText('observaciones')->nullable();
         });
     }

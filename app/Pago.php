@@ -15,7 +15,7 @@ class Pago extends Model
   public $timestamps = false;
 
   public function cliente(){
-      return $this->belongsTo('App\Cliente','id_user');
+      return $this->belongsTo('App\Cliente','id_user');      
   }
 
 }

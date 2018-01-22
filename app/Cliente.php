@@ -10,7 +10,7 @@ class Cliente extends Model
 
     protected $table="cliente";
 
-    protected $fillable=['nombre','apellido','cc','telefono','correo','observaciones'];
+    protected $fillable=['nombre','apellido','cc','telefono','correo','ultimo_pago','observaciones'];
 
     public $timestamps = false;
 

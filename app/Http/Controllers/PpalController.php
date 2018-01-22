@@ -28,16 +28,37 @@ class PpalController extends Controller
 
 
     public function index(Request $request){
-      if($request){
-        $query=trim($request->get('searchText'));
-        $cliente=DB::table('Cliente')
-        ->select('nombre','apellido','cc','telefono','correo','estado')
+      $date = Carbon::now();
+      $query=trim($request->get('searchText'));
+      if(is_null($request)){
+        $cliente=Cliente::orderBy('estado','Activo')->get();
+
+      }else{
+
+        $cliente=DB::table('Cliente as c')
+        //->join('pago as p','c.id_user',"=","p.id_user")
+        ->select('c.nombre','c.apellido','c.cc','c.telefono','c.correo','c.ultimo_pago','c.estado')
         ->where('nombre','LIKE','%'.$query.'%')
         ->orwhere('apellido','LIKE','%'.$query.'%')
         ->orwhere('cc','LIKE','%'.$query.'%')
         ->get();
+
       }
-      return view('ppal.pago.index',["cliente"=>$cliente,"searchText"=>$query]);
+
+      foreach ($cliente as $cli) {
+        if($cli->ultimo_pago == $day=$date->format('d-m-Y')){
+          $estadoactual=Cliente::where('cc',$cli->cc)->update(['estado' => "Activo"]);
+
+        //  $cliente->update();
+      }else{
+        $estadoactual=Cliente::where('cc',$cli->cc)->update(['estado' => "Inactivo"]);
+
+      }
+      }
+
+
+
+      return view('ppal.pago.index',["cliente"=>$cliente,"searchText"=>$query,"date"=>$date]);
 
     }
 
@@ -68,14 +89,19 @@ class PpalController extends Controller
       $pago->id_user=$cliente->id_user;
       $pago->valor=$request->get('total');
       $mytime = Carbon::now('America/Bogota');
-      $pago->creacion=$mytime->toDateTimeString();
+      $mytime= $mytime->format('d-m-Y');
+      $pago->creacion=$mytime;
       $pago->pension=$request->get('pagarpension');
       $pago->arl=$request->get('pagararl');
       $pago->salud=$request->get('pagarsalud');
       //$pdf = PDF::loadView('ppal/pago/pdf',compact('pago'));
       //Mail::to($cliente->correo)->send(new confirmapago($pago));
+
       $pago->save();
-      $cliente->save();
+
+      $ultimo_pago=Pago::where('id_user',$id)->orderBy('creacion','DESC')->first();
+      $cliente->ultimo_pago=$mytime;
+      $cliente->update();
 
 
 
