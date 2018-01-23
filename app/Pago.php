@@ -10,12 +10,12 @@ class Pago extends Model
 
   protected $table="pago";
 
-  protected $fillable=['valor','id_user','pension','salud','arl'];
+  protected $fillable=['valor','id_user','concepto','creacion'];
 
   public $timestamps = false;
 
   public function cliente(){
-      return $this->belongsTo('App\Cliente','id_user');      
+      return $this->belongsTo('App\Cliente','id_user');
   }
 
 }

@@ -28,38 +28,30 @@ class PpalController extends Controller
 
 
     public function index(Request $request){
-      $date = Carbon::now();
+      $date = Carbon::now('America/Bogota');
+      $cliente=Cliente::all();
+      if($date->format('d')==25){
+        foreach ($cliente as $cli) {
+          $one_month_ago = Carbon::now()->subMonth(1)->toDateString();
+          $fechacliente=$cli->ultimo_pago;
+          if($fechacliente >= $one_month_ago){
+            $estadoactual=Cliente::where('cc',$cli->cc)->update(['estado' => "Activo"]);
+          }else{
+            $estadoactual=Cliente::where('cc',$cli->cc)->update(['estado' => "Inactivo"]);
+          }}
+      }
       $query=trim($request->get('searchText'));
       if(is_null($request)){
         $cliente=Cliente::orderBy('estado','Activo')->get();
-
       }else{
-
         $cliente=DB::table('Cliente as c')
-        //->join('pago as p','c.id_user',"=","p.id_user")
         ->select('c.nombre','c.apellido','c.cc','c.telefono','c.correo','c.ultimo_pago','c.estado')
         ->where('nombre','LIKE','%'.$query.'%')
         ->orwhere('apellido','LIKE','%'.$query.'%')
         ->orwhere('cc','LIKE','%'.$query.'%')
         ->get();
-
       }
-
-      foreach ($cliente as $cli) {
-        if($cli->ultimo_pago == $day=$date->format('d-m-Y')){
-          $estadoactual=Cliente::where('cc',$cli->cc)->update(['estado' => "Activo"]);
-
-        //  $cliente->update();
-      }else{
-        $estadoactual=Cliente::where('cc',$cli->cc)->update(['estado' => "Inactivo"]);
-
-      }
-      }
-
-
-
       return view('ppal.pago.index',["cliente"=>$cliente,"searchText"=>$query,"date"=>$date]);
-
     }
 
 
@@ -88,12 +80,10 @@ class PpalController extends Controller
       $pago= new Pago;
       $pago->id_user=$cliente->id_user;
       $pago->valor=$request->get('total');
+      $pago->concepto=$request->get('concepto');
       $mytime = Carbon::now('America/Bogota');
       $mytime= $mytime->format('d-m-Y');
       $pago->creacion=$mytime;
-      $pago->pension=$request->get('pagarpension');
-      $pago->arl=$request->get('pagararl');
-      $pago->salud=$request->get('pagarsalud');
       //$pdf = PDF::loadView('ppal/pago/pdf',compact('pago'));
       //Mail::to($cliente->correo)->send(new confirmapago($pago));
 

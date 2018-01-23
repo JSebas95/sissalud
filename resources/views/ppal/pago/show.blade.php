@@ -1,4 +1,4 @@
-@extends ('layouts.admin')
+  @extends ('layouts.admin')
 @section('contenido')
 <style>
 #contenedor{
@@ -46,16 +46,18 @@
                         <div id ="derecha">{{ $cli->telefono }}</div>
                         <div id ="izquierda">Correo:</div>
                         <div id ="derecha">{{ $cli->correo }}</div>
-                        <div id ="izquierda">Observaciones:</div>
-                        <div id ="derecha"><textarea rows="1" cols="25" >{{$cli->observaciones}}</textarea></div>
+
                         <div id ="izquierda">Concepto:</div>
-                          </div>
 
 
-                          <div class="col-lg-5 col-md-5 col-dm-5 col-xs-12">
+                          {!!Form::open(['action' => ['PpalController@stores', $cli->id_user]])!!}
+                           {{Form::token()}}
+
+                          <div id="derecha" class="col-lg-4 col-md-4 col-dm-4 col-xs-12">
                           	<div class="form-group">
-                          			<select name="estado" value="11" class="form-control">
-                          			  <option value="0">SALUD</option>
+                          			<select name="concepto" id="concepto" value="11" class="form-control">
+                                  <option value="99">ELEGIR CONCEPTO</option>
+                                  <option value="0">SALUD</option>
                           			  <option value="1">SALUD + CONFAMILIAR</option>
                                   <option value="2">SALUD + PENSION</option>
                           			  <option value="3">SALUD + PENSION + CONFAMILIAR</option>
@@ -83,20 +85,9 @@
 
                           		</div>
                           </div>
-
-
-
-
-              <input type="image" id="salud" name="salud" src="{{asset('img/salud.jpg')}}"  width="120" height="120"></img>
-              <input type="image" id="arl" name="arl" src="{{asset('img/arl.png')}}"  width="120" height="120"></img>
-              <input type="image" id="pension" name="pension" src="{{asset('img/pension.jpg')}}" width="120" height="120"></img>
-
-
-              <input type="image" value="3000" onclick="cambiar();" id="calcular" src="{{asset('img/hoja.jpg')}}" width="50" height="50"></img>
-
-
-              {!!Form::open(['action' => ['PpalController@stores', $cli->id_user]])!!}
-               {{Form::token()}}
+                          <div id ="izquierda">Observaciones:</div>
+                          <div id ="derecha"><textarea rows="1" cols="25" >{{$cli->observaciones}}</textarea></div>
+                        </div>
 
 
             	<table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
@@ -107,7 +98,7 @@
             	</thead>
             	<tfoot>
             		<th>Total</th>
-            		<th></th>
+            		<th type="text" id="conceptos" name="conceptos"></th>
 
 
                 <th><input type="text" id="total" name="total" value="0"/></th>
@@ -131,101 +122,75 @@
 <script>
 
 $(document).ready(function(){
-  $('#salud').click(function(){
+  $('#concepto').click(function(){
     agregarsalud();
   });
 });
 
-
-
-$(document).ready(function(){
-  $('#arl').click(function(){
-    agregararl();
-  });
-});
-
-$(document).ready(function(){
-  $('#pension').click(function(){
-    agregarpension();
-  });
-});
-
-var total=0;
-cont=0;
-total=0;
-subtotal=[];
-
-
-$("#guardar").hide();
-
 function agregarsalud(){
+   var valor = $("#concepto option:selected").html();
+   var value = $("#concepto").val();
 
-  salud=87300;
-  subtotal[cont]=salud;
-  total=total+subtotal[cont];
 
-  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+salud+'">Salud</label></td><td><input type="text" id="pagarsalud"  name="pagarsalud" value="'+salud+'"/></td></tr>';
-		cont++;
-		evaluar();
-		    $("#total").val(total);
-		   $("#detalles").append(fila);
+   if(value==0){
+     conceptofinal=60000;
+   }else if (value==1) {
+     conceptofinal=92000;
+   }else if (value==2) {
+     conceptofinal=185000;
+   }else if (value==3) {
+     conceptofinal=217000;
+   }else if (value==4) {
+     conceptofinal=63000;
+   }else if (value==5) {
+     conceptofinal=67000;
+   }else if (value==6) {
+     conceptofinal=78000;
+   }else if (value==7) {
+     conceptofinal=93000;
+   }else if (value==8) {
+     conceptofinal=114000;
+   }else if (value==9) {
+     conceptofinal=95000;
+   }else if (value==10) {
+     conceptofinal=99000;
+   }else if (value==11) {
+     conceptofinal=110000;
+   }else if (value==12) {
+     conceptofinal=124000;
+   }else if (value==13) {
+     conceptofinal=145000;
+   }else if (value==14) {
+     conceptofinal=185000;
+   }else if (value==15) {
+     conceptofinal=189000;
+   }else if (value==16) {
+     conceptofinal=200000;
+   }else if (value==17) {
+     conceptofinal=215000;
+   }else if (value==18) {
+     conceptofinal=236000;
+   }else if (value==19) {
+     conceptofinal=217000;
+   }else if (value==20) {
+     conceptofinal=221000;
+   }else if (value==21) {
+     conceptofinal=232000;
+   }else if (value==22) {
+     conceptofinal=246000;
+   }else if (value==23) {
+     conceptofinal=267000;
+   }else{
+     conceptofinal=0;
+   }
 
+        document.getElementById("conceptos").innerHTML = valor;
+        $("#total").val(conceptofinal);
 }
 
-function agregararl(){
-  arl=42500;
-  subtotal[cont]=arl;
-  total=total+subtotal[cont];
-
-  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+arl+'">Arl</label></td><td><input type="text" id="pagararl" name="pagararl" value="'+arl+'"/></td></tr>';
-		cont++;
-		evaluar();
-		    $("#total").val(total);
-		   $("#detalles").append(fila);
-}
-
-function agregarpension(){
-  pension=35700;
-  subtotal[cont]=pension;
-  total=total+subtotal[cont];
-
-  var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><label value="'+pension+'">Pensión</label></td><td><input type="text" id="pagarpension" name="pagarpension" value="'+pension+'"/></td></tr>';
-		cont++;
-		evaluar();
-		    $("#total").val(total);
-		   $("#detalles").append(fila);
-}
-
-function evaluar(){
-  if(total>0){
-    $("#guardar").show();
-  }else{
-    $("#guardar").hide();
-  }}
-
-  function cambiar(){
-    var x= $('#pagarsalud').val();
-    var y = $('#pagararl').val();
-    var z = $('#pagarpension').val();
-
-    if(isNaN(x)){
-      total=parseInt(y)+parseInt(z);
-      $('#total').val(total);
-    }else if (isNaN(y)) {
-      total=parseInt(x)+parseInt(z);
-      $('#total').val(total);
-    }else if (isNaN(z)) {
-      total=parseInt(x)+parseInt(y);
-      $('#total').val(total);
-    }else{
-      total=parseInt(x)+parseInt(y)+parseInt(z);
-      $('#total').val(total);
-
-    }
 
 
 
-}
 
 
 
