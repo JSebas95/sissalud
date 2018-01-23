@@ -42,29 +42,28 @@ class PagoController extends Controller
        return $pdf->download('Factura.pdf');
 }
 
-    public function show(Request $request){
-      if($request){
-        $mes=$request->get('mes');
-        //$query=$request->get('searchText');
-        $mesactual=Carbon::now();
-        if(is_null($mes)){
-          $one_month_ago = Carbon::now()->subMonth(1)->toDateString();
-          $pago=Pago::orderBy('creacion','desc')->whereDate('creacion','>=',$one_month_ago)->get();
-          $total_pagado=0;
-          foreach ($pago as $pag) {
-            $total_pagado += $pag->valor;
-          }
-        }else{
-          $pago=Pago::orderBy('creacion','desc')->whereMonth('creacion','=',$mes)->get();
-          $total_pagado=0;
-          foreach ($pago as $pag) {
-            $total_pagado += $pag->valor;
-          }
-        }
+public function show(Request $request){
+  if($request){
+    $mes=$request->get('mes');
+    //$query=$request->get('searchText');
+    $mesactual=Carbon::now();
+    if(is_null($mes)){
+      $one_month_ago = Carbon::now()->subMonth(1)->toDateString();
+      $pago=Pago::orderBy('creacion','desc')->whereDate('creacion','>=',$one_month_ago)->get();
+      $total_pagado=0;
+      foreach ($pago as $pag) {
+        $total_pagado += $pag->valor;
+      }
+    }else{
+      $pago=Pago::orderBy('creacion','desc')->whereMonth('creacion','=',$mes)->get();
+      $total_pagado=0;
+      foreach ($pago as $pag) {
+        $total_pagado += $pag->valor;
+      }
     }
-        return view('ppal.factura.show',['pago'=>$pago,'total_pagado'=>$total_pagado]);
-
-    }
+}
+    return view('ppal.factura.show',['pago'=>$pago,'total_pagado'=>$total_pagado]);
+}
 
     public function imprimereporte(Request $request){
       $mes=$request->get('mes');

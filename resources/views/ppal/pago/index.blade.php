@@ -30,6 +30,7 @@
 
         @foreach($cliente as $cli)
             <tr>
+
               <td>{{ $cli->cc }}</td>
               <td>{{ $cli->nombre }}</td>
               <td>{{ $cli->apellido }}</td>
@@ -38,7 +39,7 @@
 
 
 
-               <td><a href="{{URL::action('PpalController@show',$cli->cc)}}"><button class="btn btn-warning">Pagar</button>
+               <td><a href="{{URL::action('PpalController@show',$cli->id_user)}}"><button class="btn btn-warning">Pagar</button>
                  <a href="{{URL::action('PpalController@edit',$cli->cc)}}"><button class="btn btn-primary">Editar</button></td>
 
             </tr>

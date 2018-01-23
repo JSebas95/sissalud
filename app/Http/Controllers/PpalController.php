@@ -30,7 +30,7 @@ class PpalController extends Controller
     public function index(Request $request){
       $date = Carbon::now('America/Bogota');
       $cliente=Cliente::all();
-      if($date->format('d')==25){
+      if($date->format('d')==22){
         foreach ($cliente as $cli) {
           $one_month_ago = Carbon::now()->subMonth(1)->toDateString();
           $fechacliente=$cli->ultimo_pago;
@@ -45,7 +45,7 @@ class PpalController extends Controller
         $cliente=Cliente::orderBy('estado','Activo')->get();
       }else{
         $cliente=DB::table('Cliente as c')
-        ->select('c.nombre','c.apellido','c.cc','c.telefono','c.correo','c.ultimo_pago','c.estado')
+        ->select('c.id_user','c.nombre','c.apellido','c.cc','c.telefono','c.correo','c.ultimo_pago','c.estado')
         ->where('nombre','LIKE','%'.$query.'%')
         ->orwhere('apellido','LIKE','%'.$query.'%')
         ->orwhere('cc','LIKE','%'.$query.'%')
@@ -68,9 +68,10 @@ class PpalController extends Controller
 
 
     public function show($id){
-      $cliente = Cliente::where('cc', $id)->get();
+      $cliente=Cliente::where('id_user',$id)->first();
+      $pago=Pago::where('id_user',$id)->orderBy('creacion','DESC')->take(1)->first();
 
-        return view("ppal.pago.show",["cliente"=>$cliente]);
+        return view("ppal.pago.show",["pago"=>$pago,"cliente"=>$cliente]);
 
     }
 
@@ -82,7 +83,7 @@ class PpalController extends Controller
       $pago->valor=$request->get('total');
       $pago->concepto=$request->get('concepto');
       $mytime = Carbon::now('America/Bogota');
-      $mytime= $mytime->format('d-m-Y');
+      //$mytime= $mytime->format('d-m-Y');
       $pago->creacion=$mytime;
       //$pdf = PDF::loadView('ppal/pago/pdf',compact('pago'));
       //Mail::to($cliente->correo)->send(new confirmapago($pago));

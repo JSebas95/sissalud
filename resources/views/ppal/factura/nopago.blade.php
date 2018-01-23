@@ -54,7 +54,7 @@
                     <td>{{ $cli->apellido }}</td>
                     <td>{{ $cli->telefono }}</td>
                     <td>{{ $cli->estado }}</td>
-                      
+
 
 
                 </tr>
@@ -63,13 +63,7 @@
             </tbody>
         </table>
 
-        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-          <div class="form-group">
-            <a href="" data-target="#modal-delete" data-toggle="modal"><button name="botonfinal" class="btn btn-warning">Imprimir reporte</button></a>
-                        @include('ppal.factura.modal')
-          </div>
 
-        </div>
       </div>
 
 

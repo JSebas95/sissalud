@@ -55,7 +55,7 @@ p2{
 
 <div align="center">
   <div id ="titulo">
-<img src="C:\Laravel\sistemapago\public\img\logo.jpg" height="70" width="90" alt="Logo" />
+<img src="C:\Laravel\sistemapago\public\img\logo.jpg" height="80" width="130" alt="Logo" />
   </div>
 
 
