@@ -17,11 +17,11 @@ class CreateClienteTable extends Migration
             $table->increments('id_user');
             $table->string('nombre');
             $table->string('apellido');
-            $table->varchar('cc');
+            $table->string('cc');
             $table->integer('telefono')->nullable();
-            $table->varchar('correo')->nullable();
+            $table->string('correo')->nullable();
             $table->string('estado');
-            $table->integer('ultimo_pago')->nullable();
+            $table->string('ultimo_pago')->nullable();
             $table->longText('observaciones')->nullable();
         });
     }

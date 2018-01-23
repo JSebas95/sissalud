@@ -16,7 +16,7 @@ class CreatePagoTable extends Migration
         Schema::create('pago', function (Blueprint $table) {
             $table->increments('id_pago');
             $table->integer('id_user');
-            $table->integer('concepto')->nullable();
+            $table->string('concepto')->nullable();
             $table->string('creacion');
             $table->integer('valor');
         });
