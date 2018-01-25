@@ -18,10 +18,22 @@ class CreateClienteTable extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->string('cc');
-            $table->integer('telefono')->nullable();
+            $table->string('telefono')->nullable();
             $table->string('correo')->nullable();
             $table->string('estado');
             $table->string('ultimo_pago')->nullable();
+
+            $table->string('tipo_usuario')->nullable();
+            $table->string('empresa')->nullable();
+
+
+            $table->string('fecha_afiliacion')->nullable();
+
+
+            $table->string('eps')->nullable();
+            $table->string('arp')->nullable();
+            $table->string('pension')->nullable();
+
             $table->longText('observaciones')->nullable();
         });
     }

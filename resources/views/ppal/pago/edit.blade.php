@@ -58,6 +58,52 @@
 
 		</div>
 </div>
+
+<div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
+	<div class="form-group">
+<label for="tipo_usuario" class="control-label">Tipo de usuario</label>
+<select class="form-control" value="{{$cliente->tipo_cliente}}"  name="tipo_usuario">
+	<option value="afiliado">Afiliado</option>
+	<option value="otro">Otro</option>
+
+</select>
+</div>
+</div>
+
+<div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
+	<div class="form-group">
+<label for="empresa" class="control-label">Empresa</label>
+<select class="form-control" value="{{$cliente->empresa}}"  name="empresa">
+<option value="Operador_Empresarial">OPERADOR EMPRESARIAL</option>
+<option value="Gestion_Integral">GESTION INTEGRAL</option>
+
+</select>
+</div>
+</div>
+
+<div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
+	<div class="form-group">
+<label for="eps" class="control-label">EPS</label>
+<input type="text" value="{{$cliente->eps}}" class="form-control"  name="eps" >
+</div>
+</div>
+
+<div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
+	<div class="form-group">
+<label for="arp" class="control-label">ARP</label>
+<input type="text" value="{{$cliente->arp}}" class="form-control"  name="arp" >
+</div>
+</div>
+
+<div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
+	<div class="form-group">
+<label for="pension" class="control-label">Fondo Pension</label>
+<input type="text" value="{{$cliente->pension}}" class="form-control"  name="pension" >
+</div>
+</div>
+
+
+
 <div class="col-lg-7 col-md-7 col-dm-7 col-xs-12">
 	<div class="form-group">
 			<label for="observaciones">Observaciones</label>

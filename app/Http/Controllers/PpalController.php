@@ -108,11 +108,16 @@ class PpalController extends Controller
 
     public function update($id, Request $request){
       $cliente= Cliente::findOrFail($id);
-      $cliente->nombre=$request->get('nombre');
-      $cliente->apellido=$request->get('apellido');
+      $cliente->nombre=Str::upper($request->get('nombre'));
+      $cliente->apellido=Str::upper($request->get('apellido'));
       $cliente->cc=$request->get('cc');
       $cliente->telefono=$request->get('telefono');
       $cliente->estado=$request->get('estado');
+      $cliente->tipo_usuario=Str::upper($request->get('tipo_usuario'));
+      $cliente->empresa=Str::upper($request->get('empresa'));
+      $cliente->eps=Str::upper($request->get('eps'));
+      $cliente->arp=Str::upper($request->get('arp'));
+      $cliente->pension=Str::upper($request->get('pension'));
       $cliente->observaciones=$request->observaciones;
       $cliente->update();
       return redirect('ppal/pago');
@@ -129,6 +134,12 @@ class PpalController extends Controller
       $mytime = Carbon::now('America/Bogota');
       $cliente->ultimo_pago=$mytime;
       $cliente->estado="Activo";
+      $cliente->tipo_usuario=Str::upper($request->tipo_usuario);
+      $cliente->fecha_afiliacion=$mytime;
+      $cliente->eps=Str::upper($request->eps);
+      $cliente->arp=Str::upper($request->arp);
+      $cliente->pension=Str::upper($request->pension);
+      $cliente->empresa=Str::upper($request->empresa);
       $cliente->observaciones=$request->observaciones;
       $cliente->save();
 

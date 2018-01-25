@@ -61,6 +61,45 @@
          <input type="text" style="text-transform:uppercase;" class="form-control"  name="telefono" placeholder="Numero">
      </div>
 
+
+
+
+     <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
+   <label for="tipo_usuario" class="control-label">Tipo de usuario</label>
+   <select class="form-control" style="text-transform:uppercase;"  name="tipo_usuario">
+       <option value="afiliado">Afiliado</option>
+       <option value="otro">Otro</option>
+
+   </select>
+</div>
+
+<div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
+<label for="empresa" class="control-label">Empresa</label>
+<select class="form-control" style="text-transform:uppercase;"  name="empresa">
+  <option value="Operador_Empresarial">OPERADOR EMPRESARIAL</option>
+  <option value="Gestion_Integral">GESTION INTEGRAL</option>
+
+</select>
+</div>
+
+<div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
+  <label for="eps" class="control-label">EPS</label>
+  <input type="text" style="text-transform:uppercase;" class="form-control"  name="eps" placeholder="EPS">
+</div>
+
+<div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
+  <label for="arp" class="control-label">ARP</label>
+  <input type="text" style="text-transform:uppercase;" class="form-control"  name="arp" placeholder="ARP">
+</div>
+
+<div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
+  <label for="pension" class="control-label">Fondo Pension</label>
+  <input type="text" style="text-transform:uppercase;" class="form-control"  name="pension" placeholder="Fondo de pension">
+</div>
+
+
+
+
      <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
        <label for="observaciones" class="control-label">Observaciones</label>
        <textarea  class="form-control" rows="10" cols="40"  name="observaciones">No Observaciones</textarea>
