@@ -11,6 +11,7 @@ use App\Pago;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use DB;
 use Mail;
 use App\Mail\confirmapago;
@@ -120,11 +121,13 @@ class PpalController extends Controller
 
     public function store(Request $request){
       $cliente=New Cliente();
-      $cliente->nombre=$request->nombre;
-      $cliente->apellido=$request->apellido;
+      $cliente->nombre=Str::upper($request->nombre);
+      $cliente->apellido=Str::upper($request->apellido);
       $cliente->cc=$request->cc;
       $cliente->telefono=$request->telefono;
-      $cliente->correo=$request->correo;
+      $cliente->correo=Str::upper($request->correo);
+      $mytime = Carbon::now('America/Bogota');
+      $cliente->ultimo_pago=$mytime;
       $cliente->estado="Activo";
       $cliente->observaciones=$request->observaciones;
       $cliente->save();

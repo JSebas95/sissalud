@@ -20,6 +20,7 @@
                 <td>Nombre</td>
                 <td>Apellido</td>
                 <td>Telefono</td>
+                <td>Correo</td>
                 <td>Estado</td>
                 <td>Opciones</td>
 
@@ -35,6 +36,7 @@
               <td>{{ $cli->nombre }}</td>
               <td>{{ $cli->apellido }}</td>
               <td>{{ $cli->telefono }}</td>
+              <td>{{ $cli->correo }}</td>
               <td>{{$cli->estado}}</td><!--Deuda-->
 
 
