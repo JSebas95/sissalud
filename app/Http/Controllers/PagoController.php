@@ -26,10 +26,23 @@ class PagoController extends Controller
       if($request){
         $query=$request->get('searchText');
         if(is_null($query)){
-          $pago= Pago::orderBy('id_pago','desc')->get();
+          //$pago= Pago::orderBy('id_pago','desc')->get();
+          $pago=DB::table('Cliente as c')
+          ->join('Pago as p','c.id_user','=','p.id_user')
+          ->select('c.id_user','c.cc','c.nombre','c.apellido','p.creacion','p.valor','p.id_pago')
+          ->orderBy('id_pago','desc')
+          ->get();
         }else{
-          $cliente=Cliente::where('cc',$query)->orWhere('nombre',$query)->orWhere('apellido',$query)->first()->id_user;
-          $pago=Pago::where('id_user',$cliente)->orWhere('id_pago',$query)->get();
+          $pago=DB::table('Cliente as c')
+          ->join('Pago as p','c.id_user','=','p.id_user')
+          ->select('c.id_user','c.cc','c.nombre','c.apellido','p.creacion','p.valor','p.id_pago')
+          ->where('nombre','LIKE','%'.$query.'%')
+          ->orwhere('apellido','LIKE','%'.$query.'%')
+          ->orwhere('cc','LIKE','%'.$query.'%')
+          ->get();
+
+          //$cliente=Cliente::where('cc',$query)->orWhere('nombre',$query)->orWhere('apellido',$query)->first()->id_user;
+          //$pago=Pago::where('id_user',$cliente)->orWhere('id_pago',$query)->get();
         }
       }
       return view('ppal.factura.index',["pago"=>$pago,"searchText"=>$query]);

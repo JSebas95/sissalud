@@ -29,9 +29,9 @@
         <tbody>
         @foreach($pago as $pa)
             <tr>
-              <td>{{ $pa->cliente->cc }}</td>
-              <td>{{ $pa->cliente->nombre }}</td>
-              <td>{{ $pa->cliente->apellido }}</td>
+              <td>{{ $pa->cc }}</td>
+              <td>{{ $pa->nombre }}</td>
+              <td>{{ $pa->apellido }}</td>
               <td>{{ $pa->creacion }}</td>
               <td>${{ $pa->valor }}</td>
               <td><a href="{{URL::action('PagoController@imprimirPDF',$pa->id_pago)}}"><button class="btn btn-warning">Imprimir</button></td>
