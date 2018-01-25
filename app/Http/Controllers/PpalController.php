@@ -85,9 +85,6 @@ class PpalController extends Controller
       $mytime = Carbon::now('America/Bogota');
       //$mytime= $mytime->format('d-m-Y');
       $pago->creacion=$mytime;
-      //$pdf = PDF::loadView('ppal/pago/pdf',compact('pago'));
-      //Mail::to($cliente->correo)->send(new confirmapago($pago));
-
       $pago->save();
 
       $ultimo_pago=Pago::where('id_user',$id)->orderBy('creacion','DESC')->first();
@@ -131,7 +128,17 @@ class PpalController extends Controller
       $cliente->estado="Activo";
       $cliente->observaciones=$request->observaciones;
       $cliente->save();
-      return redirect('ppal/pago');
+
+      $pago= new Pago;
+      $ultimo_cliente=Cliente::orderBy('id_user','DESC')->take(1)->first();
+      $pago->id_user=$ultimo_cliente->id_user;
+      $pago->valor="50000";
+      $mytime = Carbon::now('America/Bogota');
+      $pago->creacion=$mytime;
+      $pago->save();
+
+
+      return redirect('ppal/factura');
     }
 
 
