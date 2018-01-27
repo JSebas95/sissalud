@@ -19,6 +19,7 @@ class CreatePagoTable extends Migration
             $table->string('concepto')->nullable();
             $table->string('creacion');
             $table->integer('valor');
+            $table->string('descripcion');
         });
     }
 

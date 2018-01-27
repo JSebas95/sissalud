@@ -41,6 +41,12 @@
 		</div>
 </div>
 
+<div class="col-lg-7 col-md-7 col-dm-7 col-xs-12">
+	<div class="form-group">
+			<label for="correo">Correo</label>
+			<input type="text" name="correo" value="{{$cliente->correo}}" class="form-control" placeholder="Correo">
+		</div>
+</div>
 
 <div class="col-lg-7 col-md-7 col-dm-7 col-xs-12">
 	<div class="form-group">
@@ -54,6 +60,7 @@
 			<select name="estado" value="{{$cliente->estado}}" class="form-control">
 			  <option value="Activo">Activo</option>
 			  <option value="Inactivo">Inactivo</option>
+				<option value="Reactivar">Reactivar</option>
 			</select>
 
 		</div>
@@ -73,11 +80,7 @@
 <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
 	<div class="form-group">
 <label for="empresa" class="control-label">Empresa</label>
-<select class="form-control" value="{{$cliente->empresa}}"  name="empresa">
-<option value="Operador_Empresarial">OPERADOR EMPRESARIAL</option>
-<option value="Gestion_Integral">GESTION INTEGRAL</option>
-
-</select>
+<input type="text" value="{{$cliente->empresa}}" class="form-control"  name="empresa" >
 </div>
 </div>
 
@@ -90,8 +93,8 @@
 
 <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
 	<div class="form-group">
-<label for="arp" class="control-label">ARP</label>
-<input type="text" value="{{$cliente->arp}}" class="form-control"  name="arp" >
+<label for="arp" class="control-label">ARL</label>
+<input type="text" value="{{$cliente->arl}}" class="form-control"  name="arl" >
 </div>
 </div>
 
@@ -99,6 +102,13 @@
 	<div class="form-group">
 <label for="pension" class="control-label">Fondo Pension</label>
 <input type="text" value="{{$cliente->pension}}" class="form-control"  name="pension" >
+</div>
+</div>
+
+<div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
+	<div class="form-group">
+  <label for="afiliacion" class="control-label">Valor afiliacion</label>
+  <input type="text" style="text-transform:uppercase;" class="form-control"  name="afiliacion" value="50000">
 </div>
 </div>
 

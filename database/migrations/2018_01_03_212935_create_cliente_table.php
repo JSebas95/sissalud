@@ -31,7 +31,7 @@ class CreateClienteTable extends Migration
 
 
             $table->string('eps')->nullable();
-            $table->string('arp')->nullable();
+            $table->string('arl')->nullable();
             $table->string('pension')->nullable();
 
             $table->longText('observaciones')->nullable();

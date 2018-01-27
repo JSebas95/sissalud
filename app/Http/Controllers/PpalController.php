@@ -31,7 +31,7 @@ class PpalController extends Controller
     public function index(Request $request){
       $date = Carbon::now('America/Bogota');
       $cliente=Cliente::all();
-      if($date->format('d')==22){
+      if($date->format('d')==25){
         foreach ($cliente as $cli) {
           $one_month_ago = Carbon::now()->subMonth(1)->toDateString();
           $fechacliente=$cli->ultimo_pago;
@@ -70,7 +70,7 @@ class PpalController extends Controller
 
     public function show($id){
       $cliente=Cliente::where('id_user',$id)->first();
-      $pago=Pago::where('id_user',$id)->orderBy('creacion','DESC')->take(1)->first();
+      $pago=Pago::where('id_user',$id)->orderBy('id_pago','DESC')->first();
 
         return view("ppal.pago.show",["pago"=>$pago,"cliente"=>$cliente]);
 
@@ -83,12 +83,13 @@ class PpalController extends Controller
       $pago->id_user=$cliente->id_user;
       $pago->valor=$request->get('total');
       $pago->concepto=$request->get('concepto');
+      $pago->descripcion="Pago Mensualidad";
       $mytime = Carbon::now('America/Bogota');
       //$mytime= $mytime->format('d-m-Y');
       $pago->creacion=$mytime;
       $pago->save();
 
-      $ultimo_pago=Pago::where('id_user',$id)->orderBy('creacion','DESC')->first();
+      $ultimo_pago=Pago::where('id_user',$id)->orderBy('id_pago','DESC')->first();
       $cliente->ultimo_pago=$mytime;
       $cliente->update();
 
@@ -111,14 +112,37 @@ class PpalController extends Controller
       $cliente->nombre=Str::upper($request->get('nombre'));
       $cliente->apellido=Str::upper($request->get('apellido'));
       $cliente->cc=$request->get('cc');
+      $cliente->correo=Str::upper($request->get('correo'));
       $cliente->telefono=$request->get('telefono');
       $cliente->estado=$request->get('estado');
       $cliente->tipo_usuario=Str::upper($request->get('tipo_usuario'));
       $cliente->empresa=Str::upper($request->get('empresa'));
       $cliente->eps=Str::upper($request->get('eps'));
-      $cliente->arp=Str::upper($request->get('arp'));
+      $cliente->arl=Str::upper($request->get('arl'));
       $cliente->pension=Str::upper($request->get('pension'));
       $cliente->observaciones=$request->observaciones;
+
+
+      if($cliente->estado=="Reactivar"){
+        $pago= new Pago;
+        $pago->id_user=$cliente->id_user;
+        $pago->valor=$request->get('afiliacion');
+        $mytime = Carbon::now('America/Bogota');
+        //$mytime= $mytime->format('d-m-Y');
+        $pago->creacion=$mytime;
+        $pago->descripcion="Reactivacion";
+
+        $pago->save();
+
+        $ultimo_pago=Pago::where('id_user',$id)->orderBy('id_pago','DESC')->first();
+        $cliente->ultimo_pago=$mytime;
+        $cliente->update();
+        return redirect('ppal/factura');
+
+
+      }
+
+
       $cliente->update();
       return redirect('ppal/pago');
 
@@ -137,7 +161,7 @@ class PpalController extends Controller
       $cliente->tipo_usuario=Str::upper($request->tipo_usuario);
       $cliente->fecha_afiliacion=$mytime;
       $cliente->eps=Str::upper($request->eps);
-      $cliente->arp=Str::upper($request->arp);
+      $cliente->arl=Str::upper($request->arl);
       $cliente->pension=Str::upper($request->pension);
       $cliente->empresa=Str::upper($request->empresa);
       $cliente->observaciones=$request->observaciones;
@@ -146,7 +170,8 @@ class PpalController extends Controller
       $pago= new Pago;
       $ultimo_cliente=Cliente::orderBy('id_user','DESC')->take(1)->first();
       $pago->id_user=$ultimo_cliente->id_user;
-      $pago->valor="50000";
+      $pago->valor=$request->get('afiliacion');
+      $pago->descripcion="Registro Inicial";
       $mytime = Carbon::now('America/Bogota');
       $pago->creacion=$mytime;
       $pago->save();

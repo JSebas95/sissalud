@@ -77,6 +77,7 @@ p2{
               <strong>------- Concepto -------</strong>
             </div>
               <div id ="contenedor">
+                <div><strong>{{ $pa->descripcion }}</strong></div>
                 <div><strong>Valor:</strong> ${{ $pa->valor }}</div>
               </div>
 

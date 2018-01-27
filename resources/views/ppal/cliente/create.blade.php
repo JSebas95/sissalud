@@ -75,11 +75,7 @@
 
 <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
 <label for="empresa" class="control-label">Empresa</label>
-<select class="form-control" style="text-transform:uppercase;"  name="empresa">
-  <option value="Operador_Empresarial">OPERADOR EMPRESARIAL</option>
-  <option value="Gestion_Integral">GESTION INTEGRAL</option>
-
-</select>
+<input type="text" style="text-transform:uppercase;" class="form-control"  name="empresa" placeholder="Empresa">
 </div>
 
 <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
@@ -88,13 +84,17 @@
 </div>
 
 <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
-  <label for="arp" class="control-label">ARP</label>
-  <input type="text" style="text-transform:uppercase;" class="form-control"  name="arp" placeholder="ARP">
+  <label for="arp" class="control-label">ARL</label>
+  <input type="text" style="text-transform:uppercase;" class="form-control"  name="arl" placeholder="ARL">
 </div>
 
 <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
   <label for="pension" class="control-label">Fondo Pension</label>
   <input type="text" style="text-transform:uppercase;" class="form-control"  name="pension" placeholder="Fondo de pension">
+</div>
+<div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
+  <label for="afiliacion" class="control-label">Valor afiliacion</label>
+  <input type="text" style="text-transform:uppercase;" class="form-control"  name="afiliacion" value="50000">
 </div>
 
 

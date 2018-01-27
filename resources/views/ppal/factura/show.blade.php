@@ -43,7 +43,11 @@
                     <td>Nombre</td>
                     <td>Apellido</td>
                     <td>Telefono</td>
-                    <td>Estado deuda</td>
+                    <td>Empresa</td>
+                    <td>EPS</td>
+                    <td>ARL</td>
+                    <td>Pension</td>
+                    <td>Valor</td>
                     <!--td colspan="2"></td-->
                 </tr>
             </thead>
@@ -54,9 +58,11 @@
                     <td>{{ $pag->cliente->cc }}</td>
                     <td>{{ $pag->cliente->nombre }}</td>
                     <td>{{ $pag->cliente->apellido }}</td>
-
-
                     <td>{{ $pag->cliente->telefono }}</td>
+                    <td>{{ $pag->cliente->empresa }}</td>
+                    <td>{{ $pag->cliente->eps }}</td>
+                    <td>{{ $pag->cliente->arl }}</td>
+                    <td>{{ $pag->cliente->pension }}</td>
                     <td>${{ $pag->valor }}</td>
 
                 </tr>
