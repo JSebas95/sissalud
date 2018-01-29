@@ -92,13 +92,21 @@ public function show(Request $request){
 
     }
 
-    public function nopago(){
+    public function inactivo(){
       $cliente=Cliente::where('estado','Inactivo')->get();
-      return view('ppal.factura.nopago',['cliente'=>$cliente]);
+      return view('ppal.factura.inactivo',['cliente'=>$cliente]);
 
     }
 
+    public function nopago(){
+      $date = Carbon::now('America/Bogota');
+
+        $one_month_ago = Carbon::now()->subMonth(1)->toDateString();
+        $cliente=Cliente::where('ultimo_pago','<=',$one_month_ago)->where('estado','!=','Inactivo')->get();
+    return view('ppal.factura.nopago',['cliente'=>$cliente]);
 
 
 
+
+}
 }

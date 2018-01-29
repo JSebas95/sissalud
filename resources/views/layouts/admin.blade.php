@@ -118,8 +118,9 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="/ppal/factura/show"><i class="fa fa-circle-o"></i> Mes</a></li>
-                <li><a href="/ppal/factura/show/nopago"><i class="fa fa-circle-o"></i> No pago</a></li>
+                <li><a href="/ppal/factura/show"><i class="fa fa-circle-o"></i> Pagos del Mes</a></li>
+                <li><a href="/ppal/factura/show/nopago"><i class="fa fa-circle-o"></i> No Pago</a></li>
+                <li><a href="/ppal/factura/show/inactivo"><i class="fa fa-circle-o"></i> Inactivos</a></li>
               </ul>
             </li>
 

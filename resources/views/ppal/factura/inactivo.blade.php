@@ -6,7 +6,7 @@
 
 <div class="container">
 
-  <h1>No pago</h1>
+  <h1>Usuarios Inactivos</h1>
 
   <div class="col-lg-12">
 
@@ -24,7 +24,6 @@
                     <td>Nombre</td>
                     <td>Apellido</td>
                     <td>Telefono</td>
-                    <td>Ultimo Pago</td>
                     <td>Estado</td>
                     <!--td colspan="2"></td-->
                 </tr>
@@ -36,7 +35,6 @@
                     <td>{{ $cli->nombre }}</td>
                     <td>{{ $cli->apellido }}</td>
                     <td>{{ $cli->telefono }}</td>
-                    <td>{{ $cli->ultimo_pago }}</td>
                     <td>{{ $cli->estado }}</td>
 
 

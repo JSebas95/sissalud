@@ -117,6 +117,7 @@ class PpalController extends Controller
       $cliente->estado=$request->get('estado');
       $cliente->tipo_usuario=Str::upper($request->get('tipo_usuario'));
       $cliente->empresa=Str::upper($request->get('empresa'));
+      $cliente->fecha_afiliacion=$request->get('fecha_afiliacion');
       $cliente->eps=Str::upper($request->get('eps'));
       $cliente->arl=Str::upper($request->get('arl'));
       $cliente->pension=Str::upper($request->get('pension'));

@@ -107,6 +107,13 @@
 
 <div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
 	<div class="form-group">
+		<label for="fecha_afiliacion" class="control-label">Fecha Afiliacion</label>
+<input type="text" value="{{$cliente->fecha_afiliacion}}" class="form-control" name="fecha_afiliacion" >
+</div>
+</div>
+
+<div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
+	<div class="form-group">
   <label for="afiliacion" class="control-label">Valor afiliacion</label>
   <input type="text" style="text-transform:uppercase;" class="form-control"  name="afiliacion" value="50000">
 </div>

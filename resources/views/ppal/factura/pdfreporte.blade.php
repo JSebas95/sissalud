@@ -54,6 +54,7 @@
                   <td>EPS</td>
                   <td>ARL</td>
                   <td>Pension</td>
+                  <td>Fecha Afiliacion</td>
                   <td>Valor</td>
                     <!--td colspan="2"></td-->
                 </tr>
@@ -70,6 +71,7 @@
                   <td>{{ $pag->cliente->eps }}</td>
                   <td>{{ $pag->cliente->arl }}</td>
                   <td>{{ $pag->cliente->pension }}</td>
+                  <td>{{ $pag->cliente->fecha_afiliacion }}</td>
                   <td>${{ $pag->valor }}</td>
 
                 </tr>
