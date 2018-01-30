@@ -54,7 +54,7 @@
       {!!Form::open(['action' => ['PpalController@stores', $cliente->id_user]])!!}
       {{Form::token()}}
 
-      @if($cliente->ultimo_pago == NULL)
+      @if($cliente->ultimo_pago == NULL || $cliente->ultimo_pago == 0000-00-00)
       <div id="derecha" class="col-lg-4 col-md-4 col-dm-4 col-xs-12">
         <div class="form-group">
           <select name="concepto" id="concepto" class="form-control">

@@ -29,9 +29,9 @@
         </thead>
         <tbody>
 
+
         @foreach($cliente as $cli)
             <tr>
-
               <td>{{ $cli->cc }}</td>
               <td>{{ $cli->nombre }}</td>
               <td>{{ $cli->apellido }}</td>

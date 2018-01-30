@@ -71,7 +71,7 @@
             @endforeach
               <tr style="background-color:lightgrey; font-weight:bold">
                 <td><h4>Total</h4></td>
-                <td colspan='4'></td>
+                <td colspan='7'></td>
                 <td><h4>${{ number_format($total_pagado) }}</h4></td>
                 <td colspan='1'></td>
               </tr>
