@@ -43,7 +43,6 @@
                     <td>Nombre</td>
                     <td>Apellido</td>
                     <td>Telefono</td>
-                    <td>Empresa</td>
                     <td>EPS</td>
                     <td>ARL</td>
                     <td>Pension</td>
@@ -60,7 +59,6 @@
                     <td>{{ $pag->cliente->nombre }}</td>
                     <td>{{ $pag->cliente->apellido }}</td>
                     <td>{{ $pag->cliente->telefono }}</td>
-                    <td>{{ $pag->cliente->empresa }}</td>
                     <td>{{ $pag->cliente->eps }}</td>
                     <td>{{ $pag->cliente->arl }}</td>
                     <td>{{ $pag->cliente->pension }}</td>
@@ -71,7 +69,7 @@
             @endforeach
               <tr style="background-color:lightgrey; font-weight:bold">
                 <td><h4>Total</h4></td>
-                <td colspan='7'></td>
+                <td colspan='8'></td>
                 <td><h4>${{ number_format($total_pagado) }}</h4></td>
                 <td colspan='1'></td>
               </tr>

@@ -71,7 +71,7 @@ p2{
       </div>
 
         <div align="left">
-              <p2>Recibí de: </p2><br />{{ $pa->cliente->apellido }} {{ $pa->cliente->nombre }}
+              <p2>Recibo de: </p2><br />{{ $pa->cliente->apellido }} {{ $pa->cliente->nombre }}
 
               <div align="center">
               <strong>------- Concepto -------</strong>

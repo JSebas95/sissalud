@@ -3,7 +3,8 @@
 @section('contenido')
 <style>
 #contenedor{
-  width: 80%;
+  width: 100%;
+  display: inline-block;
 }
 #izquierda{
   height:50%;
@@ -19,6 +20,7 @@
   width:85%;
   padding-bottom: 5px;
   font-size:22px;
+  display: inline;
 }
 
 </style>
@@ -39,15 +41,35 @@
     <div id ="contenedor">
       <div id ="izquierda">Nombres: </div>
       <div id ="derecha">{{ $cliente->nombre }}</div>
+    </div>
+    <div id ="contenedor">
       <div id ="izquierda">Apellidos: </div>
       <div id ="derecha">{{ $cliente->apellido }}</div>
+      </div>
+    <div id ="contenedor">
       <div id ="izquierda">CC: </div>
       <div id ="derecha">{{ $cliente->cc }}</div>
+      </div>
+    <div id ="contenedor">
       <div id ="izquierda">Telefono: </div>
       <div id ="derecha">{{ $cliente->telefono }}</div>
+      </div>
+    <div id ="contenedor">
       <div id ="izquierda">Correo:</div>
       <div id ="derecha">{{ $cliente->correo }}</div>
-
+      </div>
+    <div id ="contenedor">
+      <div id ="izquierda">Arl:</div>
+      <div id ="derecha">{{ $cliente->arl }}</div>
+</div>
+    <div id ="contenedor">
+      <div id ="izquierda">EPS:</div>
+      <div id ="derecha">{{ $cliente->eps }}</div>
+</div>
+    <div id ="contenedor">
+      <div id ="izquierda">Pension:</div>
+      <div id ="derecha">{{ $cliente->pension }}</div>
+<div id ="contenedor">
       <div id ="izquierda">Concepto:</div>
 
 
@@ -904,11 +926,13 @@
 
         </div>
       </div>
+      </div>
 
       @endif
-
+<div id ="contenedor">
       <div id ="izquierda">Observaciones:</div>
       <div id ="derecha"><textarea rows="1" cols="25" >{{$cliente->observaciones}}</textarea></div>
+    </div>
     </div>
 
 
